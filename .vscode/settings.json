@@ -27,6 +27,10 @@
   "tailwindCSS.lint.recommendedVariantOrder": "warning",
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
+  },
+  "editor.wordWrap": "on",
+  "workbench.editorAssociations": {
+    "*.svg": "default"
   }
 }
 
