@@ -8,6 +8,7 @@
 :root {
   --foreground: #FFFFFF;
   --background: #1D1E1E;
+  --navigation-height: 56px;
 }
 
 body {

@@ -32,7 +32,7 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState<Menu | null>(null);
 
   return (
-    <header className="fixed top-10 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-14 flex items-center justify-between">
+    <header className="fixed top-10 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] flex items-center justify-between">
       <Image
         src="/logos/logo_with_name.png"
         alt="logo"
