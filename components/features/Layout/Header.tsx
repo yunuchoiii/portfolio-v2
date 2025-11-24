@@ -13,6 +13,7 @@ const MenuLink = ({ href, children, onClick, active }: { href: string, children:
       href={href} 
       className={`group h-10 flex items-center justify-center px-6 rounded-full border border-transparent hover:border-white/20 hover:bg-white/10 transition-all duration-300 ease-in-out ${active ? "bg-white/10" : ""}`} 
       onClick={onClick}
+      replace
     >
       <span className="relative inline-block">
         {/* 기본 텍스트 (흰색) */}

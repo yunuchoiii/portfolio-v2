@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "lucide-react": "^0.554.0",
     "next": "14.2.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
