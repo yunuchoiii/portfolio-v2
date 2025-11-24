@@ -3,6 +3,7 @@
 import InstagramIcon from "@/assets/icons/instagram.svg";
 import KakaoTalkIcon from "@/assets/icons/kakaotalk.svg";
 import IconButton from "@/components/common/Button/IconButton";
+import { EMAIL_LINK, INSTAGRAM_LINK, KAKAO_LINK } from "@/constant/link";
 import { ArrowDown, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ const Home = () => {
   return (
     <section 
       id="home" 
-      className="h-screen w-full bg-gradient-to-br from-[#393939] to-[#1D1E1E]"
+      className="h-screen w-full bg-gradient-to-b from-[#393939] to-[#1D1E1E]"
     >
       <Image
         src="/images/background_lines.png"
@@ -32,17 +33,17 @@ const Home = () => {
         </p>
         <ul className="flex items-center gap-x-5">
           <li>
-            <a href="mailto:chltjdnjs529@gmail.com">
+            <a href={EMAIL_LINK} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<Mail className="size-9" />} />
             </a>
           </li>
           <li>
-            <a href="https://open.kakao.com/o/sYldU2qg" target="_blank" rel="noopener noreferrer">
+            <a href={KAKAO_LINK} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<KakaoTalkIcon className="size-9" />} />
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/yunuchoiii" target="_blank" rel="noopener noreferrer">
+            <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<InstagramIcon className="size-9" />} />
             </a>
           </li>

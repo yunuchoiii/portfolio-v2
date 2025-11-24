@@ -1,6 +1,7 @@
 "use client";
 
 import GitHubIcon from "@/assets/icons/github.svg";
+import { GITHUB_LINK } from "@/constant/link";
 import { Menu, menuList } from "@/types/menu";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -41,7 +42,7 @@ const Header = () => {
         height={56}
         className="w-auto h-12 object-contain"
       />
-      <nav className="h-14 flex items-center p-2 bg-[linear-gradient(150deg,rgba(255,255,255,0.03),rgba(255,255,255,0.07))] border border-white/10 backdrop-blur rounded-full">
+      <nav className="h-14 flex items-center p-2 bg-[linear-gradient(150deg,rgba(255,255,255,0.03),rgba(255,255,255,0.07))] border border-white/10 backdrop-blur rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.1)]">
           <ul className="flex items-center gap-x-2">
               {menuList.map((menu) => (
                 <li key={menu.label}>
@@ -56,7 +57,7 @@ const Header = () => {
               ))}
           </ul>
       </nav>
-      <a href="https://github.com/yunuchoiii" target="_blank" rel="noopener noreferrer">
+      <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
         <div className="group w-14 h-14 p-2 hover:bg-white/5 rounded-full flex items-center justify-center border border-transparent hover:border-white/10 backdrop-blur transition-all duration-300 ease-in-out hover:w-[165px] hover:justify-between hover:gap-x-4">
           <GitHubIcon className="flex-shrink-0" />
           <div className="flex items-center gap-x-2 group-hover:opacity-100 group-hover:w-[85px] opacity-0 w-0 overflow-hidden transition-all duration-300 ease-in-out">
