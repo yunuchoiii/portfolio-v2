@@ -33,7 +33,7 @@ const MenuLink = ({ href, children, onClick, active }: { href: string, children:
       onClick={handleClick}
       replace
     >
-      <span className="relative inline-block">
+      <span className="relative inline-block whitespace-nowrap">
         {/* 기본 텍스트 (흰색) */}
         <span className={`bg-gradient-to-r from-white/80 to-white/80 bg-clip-text text-transparent ${active ? "text-transparent" : ""}`}>
           {children}
