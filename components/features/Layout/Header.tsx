@@ -113,19 +113,19 @@ const Header = () => {
         className="w-auto h-12 object-contain"
       />
       <nav className="h-14 flex items-center p-2 bg-[linear-gradient(150deg,rgba(255,255,255,0.03),rgba(255,255,255,0.07))] border border-white/10 backdrop-blur rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.1)]">
-          <ul className="flex items-center gap-x-2">
-              {menuList.map((menu) => (
-                <li key={menu.label}>
-                  <MenuLink 
-                    href={menu.href} 
-                    active={activeSection === menu.label as Menu}
-                    onClick={() => setActiveSection(menu.label as Menu)}
-                  >
-                    {menu.label}
-                  </MenuLink>
-                </li>
-              ))}
-          </ul>
+        <ul className="flex items-center gap-x-2">
+          {menuList.map((menu) => (
+            <li key={menu.label}>
+              <MenuLink 
+                href={menu.href} 
+                active={activeSection === menu.label as Menu}
+                onClick={() => setActiveSection(menu.label as Menu)}
+              >
+                {menu.label}
+              </MenuLink>
+            </li>
+          ))}
+        </ul>
       </nav>
       <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
         <div className="group w-14 h-14 p-2 hover:bg-white/5 rounded-full flex items-center justify-center border border-transparent hover:border-white/10 backdrop-blur transition-all duration-300 ease-in-out hover:w-[165px] hover:justify-between hover:gap-x-4">
