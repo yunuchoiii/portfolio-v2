@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
-import { Skill } from "@/types/skill";
+import { Tool } from "@/types/skill";
 
-type SkillIconButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & Skill & {
+type SkillIconButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & Tool & {
   active: boolean;
 };
 
-const SkillIconButton = ({ icon: Icon, name, level, pointColor, active, ...props }: SkillIconButtonProps) => {
+const SkillIconButton = ({ icon: Icon, name, pointColor, active, ...props }: SkillIconButtonProps) => {
   return <div className="flex flex-col items-center gap-y-2 w-[60px]">
     <button 
       title={name}
@@ -23,7 +23,9 @@ const SkillIconButton = ({ icon: Icon, name, level, pointColor, active, ...props
       />
       <Icon className="size-10 z-10" />
     </button>
-    <p className="text-xs whitespace-nowrap">{name}</p>
+    <p className={cn("text-xs whitespace-nowrap transition-all duration-300 ease-in-out", !active && "blur-xl")}>
+      {name}
+    </p>
   </div>;
 };
 
