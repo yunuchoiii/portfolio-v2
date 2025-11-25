@@ -35,6 +35,32 @@ const config: Config = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      keyframes: {
+        "flip-in-hor-top": {
+          "0%": {
+            transform: "rotateX(-80deg)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "rotateX(0)",
+            opacity: "1",
+          },
+        },
+        "flip-out-hor-top": {
+          "0%": {
+            transform: "rotateX(0)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "rotateX(-70deg)",
+            opacity: "0",
+          },
+        },
+      },
+      animation: {
+        "flip-in-hor-top": "flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)",
+        "flip-out-hor-top": "flip-out-hor-top 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530)",
+      },
     },
   },
   plugins: [],

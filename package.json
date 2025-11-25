@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/runtime": "^7.28.4",
     "clsx": "^2.1.1",
     "lucide-react": "^0.554.0",
     "next": "14.2.2",
+    "notion-client": "^7.7.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-notion-x": "^7.7.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {

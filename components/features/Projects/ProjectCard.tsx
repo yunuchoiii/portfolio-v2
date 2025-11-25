@@ -1,11 +1,17 @@
 import { cn } from "@/lib/utils";
 import { Project } from "@/types/project";
 
-const ProjectCard = ({ project }: { project: Project }) => {
+interface ProjectCardProps {
+  project: Project;
+  onClick?: () => void;
+}
+
+const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   const isCompanyProject = !!project.company;
   return (
     <button 
       key={project.title}
+      onClick={onClick}
       className={cn("group w-full bg-cover bg-center rounded-[40px] bg-no-repeat", isCompanyProject ? "aspect-[562/288]" : "aspect-[902/288]")}
       style={{ backgroundImage: `url(${project.image})` }}
     >

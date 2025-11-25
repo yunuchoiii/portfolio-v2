@@ -15,6 +15,7 @@ export interface Project {
     end?: string;
   };
   notionLink?: string;
+  notionId?: string;
   githubLink?: string;
   company?: string;
 }

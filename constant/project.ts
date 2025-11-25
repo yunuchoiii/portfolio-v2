@@ -22,6 +22,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
       end: "2025.05",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2b5c22b00eb680fcbef0cd5d776d36df?source=copy_link",
+    notionId: "2b5c22b00eb680fcbef0cd5d776d36df",
     company: ProjectCompany.PTS,
   },
   {
@@ -44,6 +45,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
       end: "2025.11",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2b4c22b00eb680c2a5eff2efd18220f4?source=copy_link",
+    notionId: "2b4c22b00eb680c2a5eff2efd18220f4",
     company: ProjectCompany.PTS,
   },
   {
@@ -66,6 +68,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
       end: "2025.07",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2b4c22b00eb680c2a5eff2efd18220f4?source=copy_link",
+    notionId: "2b4c22b00eb680c2a5eff2efd18220f4",
     company: ProjectCompany.PTS,
   },
   {
@@ -86,6 +89,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
       end: "2024.09",
     },
     notionLink: "https://www.notion.so/yunuchoiii/SaaS-2b5c22b00eb680698e1df87f9c70eb14?source=copy_link",
+    notionId: "2b5c22b00eb680698e1df87f9c70eb14",
     company: ProjectCompany.MFP,
   },
   {
@@ -106,6 +110,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
       end: "2024.09",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2b5c22b00eb680ad9735e5246dafae38?source=copy_link",
+    notionId: "2b5c22b00eb680ad9735e5246dafae38",
     company: ProjectCompany.MFP,
   },
 ];
@@ -128,6 +133,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       end: "2025.11",
     },
     notionLink: "https://www.notion.so/yunuchoiii/SaaS-2b5c22b00eb680698e1df87f9c70eb14?source=copy_link",
+    notionId: "2b5c22b00eb680698e1df87f9c70eb14",
   },
   {
     title: "JJH 수학학원 홈페이지",
@@ -150,6 +156,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       end: "2025.05",
     },
     notionLink: "https://www.notion.so/yunuchoiii/JJH-2b5c22b00eb6804b9ab7f001dc943819?source=copy_link",
+    notionId: "2b5c22b00eb6804b9ab7f001dc943819",
   },
   {
     title: "NextMovie",
@@ -167,6 +174,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       end: "2023.04",
     },
     notionLink: "https://www.notion.so/yunuchoiii/NextMovie-2b5c22b00eb680db9404d4f3aa837d71?source=copy_link",
+    notionId: "2b5c22b00eb680db9404d4f3aa837d71",
   },
   {
     title: "YMDB",
@@ -183,6 +191,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       end: "2023.03",
     },
     notionLink: "https://www.notion.so/yunuchoiii/YMDB-2b5c22b00eb68025af9ec9e36d7ccd3c?source=copy_link",
+    notionId: "2b5c22b00eb68025af9ec9e36d7ccd3c",
   },
   {
     title: "재고 관리 서비스",
@@ -200,6 +209,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       end: "2023.03",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2b5c22b00eb680c7a59cffaa0bb5a1e3?source=copy_link",
+    notionId: "2b5c22b00eb680c7a59cffaa0bb5a1e3",
   },
   {
     title: "집밥 김선생",
@@ -216,5 +226,6 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       end: "2023.03",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2b5c22b00eb680b79a62ce3f980bf13a?source=copy_link",
+    notionId: "2b5c22b00eb680b79a62ce3f980bf13a",
   },
 ];

@@ -1,9 +1,13 @@
 import Title from "@/components/common/Typography/Title";
 import { COMPANY_PROJECT_LIST } from "@/constant/project";
-import { ProjectCompany } from "@/types/project";
+import { Project, ProjectCompany } from "@/types/project";
 import ProjectCard from "./ProjectCard";
 
-const CompanyProjects = () => {
+interface CompanyProjectsProps {
+  onProjectClick: (project: Project) => void;
+}
+
+const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
   const PTS_PROJECTS = COMPANY_PROJECT_LIST.filter((project) => project.company === ProjectCompany.PTS);
   const MFP_PROJECTS = COMPANY_PROJECT_LIST.filter((project) => project.company === ProjectCompany.MFP);
 
@@ -20,6 +24,7 @@ const CompanyProjects = () => {
             <ProjectCard 
               key={project.title}
               project={project}
+              onClick={() => onProjectClick(project)}
             />
           ))}
         </div>
@@ -34,6 +39,7 @@ const CompanyProjects = () => {
             <ProjectCard 
               key={project.title}
               project={project}
+              onClick={() => onProjectClick(project)}
             />
           ))}
         </div>
