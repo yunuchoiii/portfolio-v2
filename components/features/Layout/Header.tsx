@@ -129,7 +129,7 @@ const Header = () => {
       </nav>
       <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
         <div className="group w-14 h-14 p-2 hover:bg-white/5 rounded-full flex items-center justify-center border border-transparent hover:border-white/10 backdrop-blur transition-all duration-300 ease-in-out hover:w-[165px] hover:justify-between hover:gap-x-4">
-          <GitHubIcon className="flex-shrink-0" />
+          <GitHubIcon className="flex-shrink-0 size-10" />
           <div className="flex items-center gap-x-2 group-hover:opacity-100 group-hover:w-[85px] opacity-0 w-0 overflow-hidden transition-all duration-300 ease-in-out">
             <span className="font-medium whitespace-nowrap">GitHub</span>
             <ArrowRight className="size-6 flex-shrink-0" />
