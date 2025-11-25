@@ -104,7 +104,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-10 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] flex items-center justify-between">
+    <header className="fixed top-6 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] flex items-center justify-between">
       <Image
         src="/logos/logo_with_name.png"
         alt="logo"
@@ -112,7 +112,7 @@ const Header = () => {
         height={56}
         className="w-auto h-12 object-contain"
       />
-      <nav className="h-14 flex items-center p-2 bg-[linear-gradient(150deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3))] border border-white/10 backdrop-blur rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.2)]">
+      <nav className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-14 flex items-center p-2 bg-[linear-gradient(150deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3))] border border-white/10 backdrop-blur rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.2)]">
         <ul className="flex items-center gap-x-2">
           {menuList.map((menu) => (
             <li key={menu.label}>

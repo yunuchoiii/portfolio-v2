@@ -30,10 +30,24 @@ body {
   }
 }
 
-.notion-container main {
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
+.notion-container {
+  main {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+  }
+
+  .notion-list li {
+    padding: 4px 0px;
+  }
+
+  .notion-h {
+    margin-bottom: 6px;
+  }
+
+  .notion-inline-code {
+    color: #2CF599;
+  }
 }
 
 /* 스크롤바 숨기기 */
