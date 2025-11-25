@@ -127,6 +127,8 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       SkillEnum.Tailwind, 
       SkillEnum.HTML, 
       SkillEnum.CSS, 
+      SkillEnum.Vercel,
+      SkillEnum.Firebase,
     ],
     period: {
       start: "2025.11",
@@ -147,6 +149,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       SkillEnum.NodeJs,
       SkillEnum.MySQL,
       SkillEnum.AWS,
+      SkillEnum.Vercel,
       SkillEnum.Figma,
       SkillEnum.HTML, 
       SkillEnum.CSS, 
@@ -168,6 +171,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       SkillEnum.TypeScript, 
       SkillEnum.HTML, 
       SkillEnum.CSS, 
+      SkillEnum.Vercel,
     ],
     period: {
       start: "2023.03",
