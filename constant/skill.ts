@@ -37,6 +37,13 @@ export const SKILL_LIST: Skill[] = [
     pointColor: "#FFFFFF" 
   },
   { 
+    name: "Vue", 
+    icon: VueIcon, 
+    level: SkillLevel.Basic, 
+    pointColor: "#41B883" 
+  },
+
+  { 
     name: "TypeScript", 
     icon: TypeScriptIcon, 
     level: SkillLevel.Expert, 
@@ -61,10 +68,16 @@ export const SKILL_LIST: Skill[] = [
     pointColor: "#1B73BA" 
   },
   { 
-    name: "Tailwind", 
-    icon: TailwindIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#38BDF8" 
+    name: "Node.js", 
+    icon: NodeJsIcon, 
+    level: SkillLevel.Basic, 
+    pointColor: "#8CC84B" 
+  },
+  { 
+    name: "MySQL", 
+    icon: MySQLIcon, 
+    level: SkillLevel.Basic, 
+    pointColor: "#00546B" 
   },
   { 
     name: "ReactQuery", 
@@ -79,6 +92,24 @@ export const SKILL_LIST: Skill[] = [
     pointColor: "#3578E5" 
   },
   { 
+    name: "Vuex", 
+    icon: VuexIcon, 
+    level: SkillLevel.Basic, 
+    pointColor: "#4FC08D" 
+  },
+  { 
+    name: "Tailwind", 
+    icon: TailwindIcon, 
+    level: SkillLevel.Expert, 
+    pointColor: "#38BDF8" 
+  },
+  { 
+    name: "ShadcnUI", 
+    icon: ShadcnUIIcon, 
+    level: SkillLevel.Skilled, 
+    pointColor: "#FFFFFF" 
+  },
+  { 
     name: "MUI", 
     icon: MUIIcon, 
     level: SkillLevel.Skilled, 
@@ -91,40 +122,10 @@ export const SKILL_LIST: Skill[] = [
     pointColor: "#7E13F8" 
   },
   { 
-    name: "ShadcnUI", 
-    icon: ShadcnUIIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#FFFFFF" 
-  },
-  { 
-    name: "Vue", 
-    icon: VueIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#41B883" 
-  },
-  { 
     name: "Vuetify", 
     icon: VuetifyIcon, 
     level: SkillLevel.Basic, 
     pointColor: "#1697F6" 
-  },
-  { 
-    name: "Vuex", 
-    icon: VuexIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#4FC08D" 
-  },
-  { 
-    name: "Node.js", 
-    icon: NodeJsIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#8CC84B" 
-  },
-  { 
-    name: "MySQL", 
-    icon: MySQLIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#00546B" 
   },
 ];
 
