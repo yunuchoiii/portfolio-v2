@@ -11,6 +11,10 @@
   --navigation-height: 56px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",

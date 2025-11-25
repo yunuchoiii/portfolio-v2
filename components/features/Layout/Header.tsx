@@ -6,14 +6,31 @@ import { Menu, menuList } from "@/types/menu";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MenuLink = ({ href, children, onClick, active }: { href: string, children: React.ReactNode, onClick: () => void, active: boolean }) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    // href에서 id 추출 (# 제거)
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    
+    onClick();
+  };
+
   return (
     <Link 
       href={href} 
       className={`group h-10 flex items-center justify-center px-6 rounded-full border border-transparent hover:border-white/20 hover:bg-white/10 transition-all duration-300 ease-in-out ${active ? "bg-white/10" : ""}`} 
-      onClick={onClick}
+      onClick={handleClick}
       replace
     >
       <span className="relative inline-block">
@@ -32,6 +49,59 @@ const MenuLink = ({ href, children, onClick, active }: { href: string, children:
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState<Menu | null>(null);
+
+  useEffect(() => {
+    // 모든 섹션 요소를 관찰하기 위한 Intersection Observer 설정
+    const observerOptions = {
+      root: null, // 뷰포트를 기준으로
+      rootMargin: '-20% 0px -70% 0px', // 상단 20% 지점부터 하단 70% 지점까지를 활성화 영역으로 설정
+      threshold: 0, // 요소가 조금이라도 보이면 감지
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // 현재 뷰포트에 보이는 섹션들 중에서 가장 많이 보이는 섹션 찾기
+      let maxVisibleRatio = 0;
+      let mostVisibleSection: Menu | null = null;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const visibleRatio = entry.intersectionRatio;
+          if (visibleRatio > maxVisibleRatio) {
+            maxVisibleRatio = visibleRatio;
+            const sectionId = entry.target.id;
+            // menuList에서 해당 id와 일치하는 메뉴 찾기
+            const matchedMenu = menuList.find(
+              (menu) => menu.href.replace('#', '') === sectionId
+            );
+            if (matchedMenu) {
+              mostVisibleSection = matchedMenu.label as Menu;
+            }
+          }
+        }
+      });
+
+      // 가장 많이 보이는 섹션이 있으면 활성화
+      if (mostVisibleSection) {
+        setActiveSection(mostVisibleSection);
+      }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // 모든 섹션 요소 관찰 시작
+    menuList.forEach((menu) => {
+      const sectionId = menu.href.replace('#', '');
+      const sectionElement = document.getElementById(sectionId);
+      if (sectionElement) {
+        observer.observe(sectionElement);
+      }
+    });
+
+    // 컴포넌트 언마운트 시 observer 정리
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <header className="fixed top-10 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] flex items-center justify-between">
