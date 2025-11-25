@@ -96,7 +96,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
         >
           <XIcon className="size-8" />
         </button>
-        <div className="flex flex-col gap-y-5 h-full overflow-y-auto">
+        <div className="flex flex-col gap-y-5 h-full overflow-y-auto scrollbar-hide">
           <div className="flex flex-col gap-y-5 flex-shrink-0">
             <h2 className="text-2xl font-semibold">
               {displayProject.title}
