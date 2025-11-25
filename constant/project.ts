@@ -5,7 +5,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   {
     title: "파트타임스터디 디자인시스템",
     summary: "스터디워크 내 여러 웹앱에서 공통으로 사용하는 UI 컴포넌트들을\nReact 기반으로 구축한 디자인 시스템입니다.",
-    image: "/images/projects/PTS_DesignSystem.png",
+    image: "/images/projects/PTS_DesignSystem/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -28,7 +28,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   {
     title: "파트타임스터디 웹뷰",
     summary: "파트타임스터디 앱 몇가지 주요 기능들을 웹뷰 기반으로 구현하였습니다.",
-    image: "/images/projects/PTS_PTS.png",
+    image: "/images/projects/PTS_PTS/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -51,7 +51,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   {
     title: "위드파타스 웹뷰",
     summary: "스터디카페 이용자를 위한 앱 내 대부분의 기능들을\n웹뷰 기반으로 구현하였습니다.",
-    image: "/images/projects/PTS_WPTS.png",
+    image: "/images/projects/PTS_WPTS/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -74,7 +74,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   {
     title: "메디푸드플랫폼 어드민 & SaaS 서비스",
     summary: "건강검진·식품처방 리포트를 관리하는 내부 어드민과 의료기관용 SaaS 대시보드입니다.\n통계·리포트·운영 기능을 웹 기반으로 구성했습니다.",
-    image: "/images/projects/MFP_Admin.png",
+    image: "/images/projects/MFP_Admin/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -95,7 +95,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   {
     title: "메디푸드플랫폼 이커머스",
     summary: "인사잇 앱 내부의 웹뷰 커머스로 프로젝트입니다.",
-    image: "/images/projects/MFP_Ecommerce.png",
+    image: "/images/projects/MFP_Ecommerce/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -119,7 +119,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
   {
     title: "포트폴리오",
     summary: "디자인부터 개발까지 직접 만든 개인 포트폴리오 웹사이트입니다.\n현재 버전(v2)은 프로젝트 상세 구조와 반응형 UI를 개선했습니다.",
-    image: "/images/projects/Portfolio.png",
+    image: "/images/projects/Portfolio/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -138,7 +138,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
   {
     title: "JJH 수학학원 홈페이지",
     summary: "학원 소개와 상담 기능을 제공하는 웹사이트입니다.\n기획부터 디자인, 풀스택 개발까지 혼자 진행한 프로젝트입니다.",
-    image: "/images/projects/JJH.png",
+    image: "/images/projects/JJH/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -161,7 +161,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
   {
     title: "NextMovie",
     summary: "Next.js 학습을 위해 제작한 영화 정보 조회 웹사이트입니다.\n목록·상세·검색 기능으로 Next.js 기본 구조를 익혔습니다.",
-    image: "/images/projects/NextMovie.png",
+    image: "/images/projects/NextMovie/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.NextJs, 
@@ -179,7 +179,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
   {
     title: "YMDB",
     summary: "React 실습을 위해 제작한 영화 정보 웹사이트입니다.\n리액트의 기본 컴포넌트 구조와 데이터 렌더링을 연습한 프로젝트입니다.",
-    image: "/images/projects/YMDB.png",
+    image: "/images/projects/YMDB/banner.png",
     skills: [
       SkillEnum.React, 
       SkillEnum.TypeScript, 
@@ -196,7 +196,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
   {
     title: "재고 관리 서비스",
     summary: "공장의 입·출고 데이터를 관리하는 웹 기반 재고관리 시스템입니다.\n대시보드·테이블·차트 UI를 중심으로 전체 디자인 및 프론트 개발을 담당했습니다.",
-    image: "/images/projects/Inventory.png",
+    image: "/images/projects/Inventory/banner.png",
     skills: [
       SkillEnum.Vue, 
       SkillEnum.Vuex, 
@@ -214,7 +214,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
   {
     title: "집밥 김선생",
     summary: "식단 계획·영양 분석·레시피 추천을 제공하는 Vue 기반 웹 서비스입니다.\n부트캠프 팀 프로젝트로 개발하여 공모전 동상을 수상했습니다.",
-    image: "/images/projects/DIYFood.png",
+    image: "/images/projects/DIYFood/banner.png",
     skills: [
       SkillEnum.Vue, 
       SkillEnum.Bootstrap,
