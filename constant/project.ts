@@ -26,7 +26,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   },
   {
     title: "파트타임스터디 웹뷰",
-    summary: "파트타임스터디 앱 몇가지 주요 기능을 웹뷰로 구현해 네이티브 수준의 사용성을 만든 프로젝트입니다.",
+    summary: "파트타임스터디 앱 몇가지 주요 기능들을 웹뷰 기반으로 구현하였습니다.",
     image: "/images/projects/PTS_PTS.png",
     skills: [
       SkillEnum.React, 
@@ -48,7 +48,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
   },
   {
     title: "위드파타스 웹뷰",
-    summary: "스터디카페 이용자를 위한 앱 내 대부분의 기능을 웹뷰 기반으로 구현한 서비스입니다.",
+    summary: "스터디카페 이용자를 위한 앱 내 대부분의 기능들을\n웹뷰 기반으로 구현하였습니다.",
     image: "/images/projects/PTS_WPTS.png",
     skills: [
       SkillEnum.React, 

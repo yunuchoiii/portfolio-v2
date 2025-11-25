@@ -1,0 +1,45 @@
+import Title from "@/components/common/Typography/Title";
+import { COMPANY_PROJECT_LIST } from "@/constant/project";
+import { ProjectCompany } from "@/types/project";
+import ProjectCard from "./ProjectCard";
+
+const CompanyProjects = () => {
+  const PTS_PROJECTS = COMPANY_PROJECT_LIST.filter((project) => project.company === ProjectCompany.PTS);
+  const MFP_PROJECTS = COMPANY_PROJECT_LIST.filter((project) => project.company === ProjectCompany.MFP);
+
+  return (
+    <section className="w-full flex flex-col gap-y-5">
+      <Title>Company Projects</Title>
+      <div className="flex gap-x-5">
+        <div
+          className="w-full max-w-[320px] aspect-[320/904] bg-cover bg-center rounded-[40px] bg-no-repeat flex-shrink-0"
+          style={{ backgroundImage: `url("/images/projects/PTS.png")` }}
+        />
+        <div className="flex flex-col gap-y-5 flex-1 min-w-0">
+          {PTS_PROJECTS.map((project) => (
+            <ProjectCard 
+              key={project.title}
+              project={project}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-row-reverse gap-x-5">
+        <div
+          className="w-full max-w-[320px] aspect-[320/596] bg-cover bg-center rounded-[40px] bg-no-repeat flex-shrink-0"
+          style={{ backgroundImage: `url("/images/projects/MFP.png")` }}
+        />
+        <div className="flex flex-col gap-y-5 flex-1 min-w-0">
+          {MFP_PROJECTS.map((project) => (
+            <ProjectCard 
+              key={project.title}
+              project={project}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CompanyProjects;
