@@ -3,7 +3,7 @@
 import Career from "./Career";
 import Introduction from "./Introduction";
 
-const About = () => {
+const AboutSection = () => {
   return (
     <section 
       id="about" 
@@ -17,4 +17,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutSection;
