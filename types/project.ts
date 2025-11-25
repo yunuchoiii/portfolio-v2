@@ -9,6 +9,7 @@ export interface Project {
   title: string;
   summary: string;
   image: string;
+  imageList?: string[];
   skills: SkillEnum[];
   period?: {
     start: string;
