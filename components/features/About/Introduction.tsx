@@ -32,8 +32,12 @@ const Introduction = () => {
               <li>1995.5.29</li>
               <li>서울시 송파구</li>
               <li>성균관대 러시아어문학과 졸업</li>
-              <li>010-4118-8180</li>
-              <li>chltjdnjs529@gmail.com</li>
+              <li className="hover:underline underline-offset-2">
+                <a href="tel:01041188180" target="_blank" rel="noopener noreferrer">010-4118-8180</a>
+              </li>
+              <li className="hover:underline underline-offset-2">
+                <a href="mailto:chltjdnjs529@gmail.com" target="_blank" rel="noopener noreferrer">chltjdnjs529@gmail.com</a>
+              </li>
             </ul>
           </div>
           <hr className="w-full border-white/60"/>
@@ -46,8 +50,8 @@ const Introduction = () => {
             <ul className="leading-loose text-green-10">
               <li>2년 8개월 </li>
               <li>정규직 · 프리랜서</li>
-              <li>
-                <a href={RESUME_LINK} target="_blank" rel="noopener noreferrer" className="hover:underline">
+              <li className="hover:underline underline-offset-2">
+                <a href={RESUME_LINK} target="_blank" rel="noopener noreferrer">
                   바로가기
                 </a>
               </li>
