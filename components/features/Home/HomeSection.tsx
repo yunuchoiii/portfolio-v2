@@ -23,7 +23,7 @@ const HomeSection = () => {
         className="absolute bottom-0 left-0 w-full h-full object-cover"
       />
       <div className="absolute top-1/2 -translate-y-1/2 lg:left-[20%] lg:-translate-x-0 left-1/2 -translate-x-1/2 flex flex-col gap-y-10">
-        <h1 className="text-[72px] font-extrabold italic font-poppins leading-none bg-clip-text text-transparent bg-gradient-to-br from-green-20 to-blue-40 whitespace-nowrap">
+        <h1 className="text-[72px] font-extrabold italic font-poppins leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-green-20 to-blue-40 whitespace-nowrap">
           Frontend<br/>
           Developer .
         </h1>
