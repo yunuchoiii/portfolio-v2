@@ -16,7 +16,7 @@ const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
       <Title>Company Projects</Title>
       <div className="flex gap-x-5">
         <div
-          className="w-full max-w-[320px] aspect-[320/904] bg-cover bg-center rounded-[40px] bg-no-repeat flex-shrink-0"
+          className="flex-[0_0_35%] min-w-0 aspect-[320/904] bg-cover bg-center rounded-[40px] bg-no-repeat"
           style={{ backgroundImage: `url("/images/projects/PTS/banner.png")` }}
         />
         <div className="flex flex-col gap-y-5 flex-1 min-w-0">
@@ -31,7 +31,7 @@ const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
       </div>
       <div className="flex flex-row-reverse gap-x-5">
         <div
-          className="w-full max-w-[320px] aspect-[320/596] bg-cover bg-center rounded-[40px] bg-no-repeat flex-shrink-0"
+          className="flex-[0_0_35%] min-w-0 aspect-[320/596] bg-cover bg-center rounded-[40px] bg-no-repeat"
           style={{ backgroundImage: `url("/images/projects/MFP/banner.png")` }}
         />
         <div className="flex flex-col gap-y-5 flex-1 min-w-0">
