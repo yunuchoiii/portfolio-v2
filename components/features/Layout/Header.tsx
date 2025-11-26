@@ -2,6 +2,7 @@
 
 import GitHubIcon from "@/assets/icons/github.svg";
 import { GITHUB_LINK } from "@/constant/link";
+import { moveToSection } from "@/lib/navigation";
 import { Menu, menuList } from "@/types/menu";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -9,28 +10,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const MenuLink = ({ href, children, onClick, active }: { href: string, children: React.ReactNode, onClick: () => void, active: boolean }) => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    
-    // href에서 id 추출 (# 제거)
-    const targetId = href.replace('#', '');
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      targetElement.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-    
-    onClick();
-  };
 
   return (
     <Link 
       href={href} 
       className={`group h-10 flex items-center justify-center px-6 rounded-full border border-transparent hover:border-white/20 hover:bg-white/10 transition-all duration-300 ease-in-out ${active ? "bg-white/10" : ""}`} 
-      onClick={handleClick}
+      onClick={(e) => moveToSection(e, href, onClick)}
       replace
     >
       <span className="relative inline-block whitespace-nowrap">

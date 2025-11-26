@@ -4,6 +4,7 @@ import InstagramIcon from "@/assets/icons/instagram.svg";
 import KakaoTalkIcon from "@/assets/icons/kakaotalk.svg";
 import IconButton from "@/components/common/Button/IconButton";
 import { EMAIL_LINK, INSTAGRAM_LINK, KAKAO_LINK } from "@/constant/link";
+import { moveToSection } from "@/lib/navigation";
 import { ArrowDown, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +49,11 @@ const HomeSection = () => {
             </a>
           </li>
           <li>
-            <Link href="#about" replace>
+            <Link 
+              href="#about" 
+              replace 
+              onClick={(e) => moveToSection(e, "#about", () => {})}
+            >
               <div className="group w-[140px] h-14 rounded-full bg-gradient-to-br from-green-20 to-blue-40 flex items-center justify-center p-0.5 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] hover:shadow-[0px_0px_24px_rgba(30,214,184,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out">
                 <div className="w-full h-full pl-1 rounded-full bg-[radial-gradient(circle_at_center,#3b3e3e,#333737)] backdrop-blur flex items-center justify-center gap-x-1.5">
                   <span className="font-medium whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-green-20 to-blue-30">
