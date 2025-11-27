@@ -61,12 +61,12 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
     } else if (shouldRender && displayProject) {
       // 닫기 애니메이션 시작 (displayProject는 유지)
       setIsClosing(true);
+      document.body.style.overflow = "auto";
       // 애니메이션 종료 후 언마운트 및 displayProject 초기화 (0.45s)
       const timer = setTimeout(() => {
         setShouldRender(false);
         setDisplayProject(null);
         setRecordMap(null);
-        document.body.style.overflow = "auto";
       }, 450);
       return () => clearTimeout(timer);
     }
@@ -154,7 +154,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
       style={{ perspective: "1000px" }}
     >
       <div
-        className={`relative bg-[#202020]/75 rounded-[30px] px-[60px] py-[45px] 2xl:max-w-5xl sm:max-w-[80%] max-w-[calc(100%-24px)] w-full max-h-[85%] h-full shadow-[0_0_120px_rgba(0,0,0,0.5)] backdrop-blur-[80px] ${
+        className={`relative bg-[#202020]/75 rounded-[30px] px-6 sm:px-8 md:px-12 lg:px-[60px] py-[45px] 2xl:max-w-5xl sm:max-w-[80%] max-w-[calc(100%-24px)] w-full max-h-[85%] h-full shadow-[0_0_120px_rgba(0,0,0,0.5)] backdrop-blur-[80px] ${
           isClosing ? "animate-flip-out-hor-top" : "animate-flip-in-hor-top"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -168,9 +168,9 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
           title="닫기"
           aria-label="닫기"
           onClick={onClose}
-          className="absolute top-6 right-6 active:opacity-50 transition-opacity"
+          className="absolute top-4 right-4 md:top-6 md:right-6 active:opacity-50 transition-opacity"
         >
-          <XIcon className="size-8" />
+          <XIcon className="md:size-8 size-6" />
         </button>
         <div className="flex flex-col gap-y-5 h-full overflow-y-auto scrollbar-hide">
           <div className="flex flex-col gap-y-5 flex-shrink-0">
@@ -303,7 +303,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               e.stopPropagation();
               handlePrevious();
             }}
-            className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
+            className="absolute left-0 p-6 top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="이전 이미지"
           >
             <ChevronLeft className="size-10" />
@@ -314,14 +314,14 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               e.stopPropagation();
               handleNext();
             }}
-            className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
+            className="absolute right-0 p-6 top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="다음 이미지"
           >
             <ChevronRight className="size-10" />
           </button>
 
           <div
-            className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+            className="relative max-w-[calc(100%-128px)] max-h-[90vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img

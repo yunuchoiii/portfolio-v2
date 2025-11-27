@@ -198,7 +198,7 @@ const Header = () => {
 
     {/* 모바일 버전 - 하단 네비게이션 */}
     <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden">
-      <div className="w-fit h-10 flex items-center p-1 bg-[linear-gradient(150deg,rgba(0,0,0,0.3),rgba(0,0,0,0.4))] border border-white/10 backdrop-blur-xl rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.3)]">
+      <div className="w-fit h-12 flex items-center p-1 bg-[linear-gradient(150deg,rgba(0,0,0,0.3),rgba(0,0,0,0.4))] border border-white/10 backdrop-blur-xl rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.3)]">
         <ul className="flex items-center justify-center w-full gap-x-1">
           {menuList.map((menu) => {
             const isActive = activeSection === menu.label as Menu;
@@ -207,10 +207,10 @@ const Header = () => {
               <li key={menu.label} className="flex-none">
                 <Link 
                   href={menu.href} 
-                  className={`group h-8 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out overflow-hidden ${
+                  className={`group h-10 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out overflow-hidden ${
                     isActive 
-                      ? "bg-gradient-to-br from-green-20/20 to-blue-40/20 border border-green-20/50 shadow-[0px_0px_16px_rgba(44,245,153,0.3)] w-24 min-w-[32px]" 
-                      : "w-8 border border-transparent active:bg-white/10"
+                      ? "bg-gradient-to-br from-green-20/20 to-blue-40/20 border border-green-20/50 shadow-[0px_0px_16px_rgba(44,245,153,0.3)] w-28" 
+                      : "w-10 border border-transparent active:bg-white/10"
                   }`}
                   onClick={(e) => {
                     moveToSection(e, menu.href, () => handleMenuClick(menu.label as Menu));
@@ -218,14 +218,14 @@ const Header = () => {
                   replace
                 >
                   <div className="relative w-full">
-                    <Icon className={`size-4 flex-shrink-0 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 ${
+                    <Icon className={`size-5 flex-shrink-0 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 ${
                       isActive 
-                        ? "left-2 text-white" 
+                        ? "left-2.5 text-white" 
                         : "left-1/2 -translate-x-1/2 text-white/60 group-active:text-white/80 group-active:scale-90"
                     }`} />
-                    <span className={`text-xs font-medium whitespace-nowrap transition-all duration-300 ease-in-out absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full pl-2 text-center ${
+                    <span className={`text-sm font-medium whitespace-nowrap transition-all duration-300 ease-in-out absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full pl-2 text-center ${
                       isActive 
-                        ? "opacity-100 max-w-[80px] ml-1.5" 
+                        ? "opacity-100 max-w-[80px] ml-2" 
                         : "opacity-0 max-w-0"
                     } overflow-hidden`}>
                       {menu.label}

@@ -8,11 +8,11 @@ const Career = () => {
   const isSearching = true;
 
   return (
-    <section className="w-full flex flex-col gap-y-6 sm:gap-y-8">
+    <section className="w-full max-w-[928px] flex flex-col gap-y-6 sm:gap-y-8">
       <GradientTitle>
         Career
       </GradientTitle>
-      <div className="flex flex-col gap-y-6 sm:gap-y-8">
+      <div className="flex flex-col gap-y-6 lg:gap-y-8">
         {isSearching && <CareerCard />}
         {CAREER_LIST.map((career: CareerType) => (
           <CareerCard key={career.company} career={career} />
