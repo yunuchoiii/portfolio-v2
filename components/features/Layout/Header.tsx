@@ -7,7 +7,7 @@ import { Menu, menuList } from "@/types/menu";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const MenuLink = ({ href, children, onClick, active }: { href: string, children: React.ReactNode, onClick: () => void, active: boolean }) => {
 
@@ -34,6 +34,9 @@ const MenuLink = ({ href, children, onClick, active }: { href: string, children:
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState<Menu | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const isProgrammaticScrollRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // 모든 섹션 요소를 관찰하기 위한 Intersection Observer 설정
@@ -44,6 +47,11 @@ const Header = () => {
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // 프로그래밍 방식 스크롤 중일 때는 observer 콜백 무시
+      if (isProgrammaticScrollRef.current) {
+        return;
+      }
+
       // 현재 뷰포트에 보이는 섹션들 중에서 가장 많이 보이는 섹션 찾기
       let maxVisibleRatio = 0;
       let mostVisibleSection: Menu | null = null;
@@ -72,6 +80,7 @@ const Header = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
+    observerRef.current = observer;
 
     // 모든 섹션 요소 관찰 시작
     menuList.forEach((menu) => {
@@ -82,14 +91,50 @@ const Header = () => {
       }
     });
 
+    // 스크롤 완료 감지
+    const handleScroll = () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      scrollTimeoutRef.current = setTimeout(() => {
+        // 스크롤이 완료되면 observer 다시 활성화
+        isProgrammaticScrollRef.current = false;
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     // 컴포넌트 언마운트 시 observer 정리
     return () => {
       observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
     };
   }, []);
 
-  return (
-    <header className="fixed top-6 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] flex items-center justify-between">
+  const handleMenuClick = (menu: Menu) => {
+    // 버튼 클릭 시 즉시 해당 섹션 활성화
+    setActiveSection(menu);
+    
+    // 프로그래밍 방식 스크롤 시작
+    isProgrammaticScrollRef.current = true;
+    
+    // 스크롤 완료 후 observer 다시 활성화
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
+    scrollTimeoutRef.current = setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, 1000); // 스크롤 애니메이션 시간 고려
+  };
+
+  return (<>
+    {/* 데스크탑 버전 */}
+    <header className="fixed top-6 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] hidden md:flex items-center justify-between">
       <Image
         src="/logos/logo_with_name.png"
         alt="logo"
@@ -104,7 +149,7 @@ const Header = () => {
               <MenuLink 
                 href={menu.href} 
                 active={activeSection === menu.label as Menu}
-                onClick={() => setActiveSection(menu.label as Menu)}
+                onClick={() => handleMenuClick(menu.label as Menu)}
               >
                 {menu.label}
               </MenuLink>
@@ -122,7 +167,61 @@ const Header = () => {
         </div>
       </a>
     </header>
-  );
+
+    {/* 모바일 버전 - 상단 로고 */}
+    <header className="fixed top-4 left-5 right-5 z-50 w-[calc(100%-48px)] h-[var(--navigation-height)] flex items-center justify-between md:hidden">
+      <Image
+        src="/logos/logo_with_name.png"
+        alt="logo"
+        width={71}
+        height={56}
+        className="w-auto h-8 object-contain"
+      />
+    </header>
+
+    {/* 모바일 버전 - 하단 네비게이션 */}
+    <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden">
+      <div className="w-fit h-10 flex items-center p-1 bg-[linear-gradient(150deg,rgba(0,0,0,0.3),rgba(0,0,0,0.4))] border border-white/10 backdrop-blur-xl rounded-full shadow-[4px_4px_32px_rgba(0,0,0,0.3)]">
+        <ul className="flex items-center justify-center w-full gap-x-1">
+          {menuList.map((menu) => {
+            const isActive = activeSection === menu.label as Menu;
+            const Icon = menu.icon;
+            return (
+              <li key={menu.label} className="flex-none">
+                <Link 
+                  href={menu.href} 
+                  className={`group h-8 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out overflow-hidden ${
+                    isActive 
+                      ? "bg-gradient-to-br from-green-20/20 to-blue-40/20 border border-green-20/50 shadow-[0px_0px_16px_rgba(44,245,153,0.3)] w-24 px-3 min-w-[32px]" 
+                      : "w-8 border border-transparent active:bg-white/10"
+                  }`}
+                  onClick={(e) => {
+                    moveToSection(e, menu.href, () => handleMenuClick(menu.label as Menu));
+                  }}
+                  replace
+                >
+                  <div className="flex items-center">
+                    <Icon className={`size-4 flex-shrink-0 transition-colors duration-300 ${
+                      isActive 
+                        ? "text-white" 
+                        : "text-white/60 group-active:text-white/80 group-active:scale-90"
+                    }`} />
+                    <span className={`text-xs font-medium whitespace-nowrap transition-all duration-300 ease-in-out ${
+                      isActive 
+                        ? "opacity-100 max-w-[80px] ml-1.5" 
+                        : "opacity-0 max-w-0"
+                    } overflow-hidden`}>
+                      {menu.label}
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </nav>
+  </>);
 };
 
 export default Header;

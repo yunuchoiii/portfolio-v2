@@ -11,6 +11,12 @@
   --navigation-height: 56px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --navigation-height: 40px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -22,6 +28,7 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: var(--foreground);
   background: var(--background);
+  overflow-x: hidden;
 }
 
 @layer utilities {
