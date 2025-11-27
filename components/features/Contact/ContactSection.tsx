@@ -1,13 +1,25 @@
+"use client";
+
 import { EMAIL_LINK } from "@/constant/link";
+import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
+import { cn } from "@/lib/utils";
 import { Mail } from "lucide-react";
 
 const ContactSection = () => {
+  const contentRef = useScrollAnimation();
+
   return (
     <section id="contact" className="w-full min-h-screen relative overflow-hidden">
       <div className="size-[50vh] sm:size-[60vh] lg:size-[70vh] rounded-full bg-green-20 absolute top-[-5vh] sm:top-[-8vh] lg:top-[-10vh] left-[-5vh] sm:left-[-8vh] lg:left-[-10vh]"/>
       <div className="size-[50vh] sm:size-[60vh] lg:size-[70vh] rounded-full bg-blue-30 absolute bottom-[-5vh] sm:bottom-[-8vh] lg:bottom-[-10vh] right-[-5vh] sm:right-[-8vh] lg:right-[-10vh]"/>
       <div className="w-full h-screen flex items-center justify-center backdrop-blur-[700px] bg-black/70 py-12 sm:py-16 md:py-20">
-        <div className="w-[calc(100%-40px)] sm:w-[calc(100%-60px)] md:w-[calc(100%-80px)] lg:w-[920px] min-h-[400px] sm:min-h-[450px] md:h-[500px] bg-black/30 rounded-2xl sm:rounded-3xl border border-[#2CF5BC]/10 flex flex-col items-center justify-center gap-y-8 sm:gap-y-10 md:gap-y-12 px-4 sm:px-6 md:px-8">
+        <div 
+          ref={contentRef.elementRef as React.RefObject<HTMLDivElement>}
+          className={cn(
+            "w-[calc(100%-40px)] sm:w-[calc(100%-60px)] md:w-[calc(100%-80px)] lg:w-[920px] min-h-[400px] sm:min-h-[450px] md:h-[500px] bg-black/30 rounded-2xl sm:rounded-3xl border border-[#2CF5BC]/10 flex flex-col items-center justify-center gap-y-8 sm:gap-y-10 md:gap-y-12 px-4 sm:px-6 md:px-8 scroll-animate-scale",
+            contentRef.isVisible && "visible"
+          )}
+        >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold italic font-poppins leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-green-20 to-blue-40 pr-2 text-center">
             Let's Talk!
           </h1>

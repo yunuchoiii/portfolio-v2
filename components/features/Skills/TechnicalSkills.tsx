@@ -3,12 +3,16 @@
 import SkillIconButton from "@/components/common/Button/SkillIconButton";
 import Title from "@/components/common/Typography/Title";
 import { SKILL_DATA } from "@/constant/skill";
+import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
 import { cn } from "@/lib/utils";
 import { SkillLevel } from "@/types/skill";
 import { useState } from "react";
 
 const TechnicalSkills = () => {
   const [selectedLevel, setSelectedLevel] = useState<SkillLevel | null>(null);
+  const titleRef = useScrollAnimation();
+  const buttonsRef = useScrollAnimation();
+  const skillsRef = useScrollAnimation();
 
   const levelButtons = [
     {
@@ -38,9 +42,24 @@ const TechnicalSkills = () => {
   };
 
   return <section className="flex flex-col gap-y-8">
-    <Title>Technical Skills</Title>
+    <div
+      ref={titleRef.elementRef as React.RefObject<HTMLDivElement>}
+      className={cn(
+        "scroll-animate-fade-in",
+        titleRef.isVisible && "visible"
+      )}
+    >
+      <Title>Technical Skills</Title>
+    </div>
     <div className="flex flex-col gap-y-5">
-      <div className="flex gap-x-2.5">
+      <div
+        ref={buttonsRef.elementRef as React.RefObject<HTMLDivElement>}
+        className={cn(
+          "flex gap-x-2.5 scroll-animate-slide-up",
+          buttonsRef.isVisible && "visible"
+        )}
+        style={{ transitionDelay: "100ms" }}
+      >
         {levelButtons.map((button) => (
           <button 
             key={button.value} 
@@ -73,7 +92,14 @@ const TechnicalSkills = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-wrap gap-5">
+      <div
+        ref={skillsRef.elementRef as React.RefObject<HTMLDivElement>}
+        className={cn(
+          "flex flex-wrap gap-5 scroll-animate-fade-in",
+          skillsRef.isVisible && "visible"
+        )}
+        style={{ transitionDelay: "200ms" }}
+      >
         {SKILL_DATA.skills.map((skill) => (
           <SkillIconButton 
             key={skill.name} 

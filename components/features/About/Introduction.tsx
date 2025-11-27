@@ -1,13 +1,27 @@
+"use client";
+
 import { RESUME_LINK } from "@/constant/link";
+import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const Introduction = () => {
+  const profileRef = useScrollAnimation();
+  const infoRef = useScrollAnimation();
+  const textRef = useScrollAnimation();
+
   return (
     <section 
       className="w-full flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-x-20"
     >
       <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col sm:gap-x-8 md:gap-x-10 gap-y-8 lg:gap-y-10 items-center justify-center">
-        <div className="relative flex-1 lg:flex-none aspect-square w-1/2 sm:w-auto sm:max-w-[220px] lg:w-[250px] lg:max-w-none">
+        <div 
+          ref={profileRef.elementRef as React.RefObject<HTMLDivElement>}
+          className={cn(
+            "relative flex-1 lg:flex-none aspect-square w-1/2 sm:w-auto sm:max-w-[220px] lg:w-[250px] lg:max-w-none scroll-animate-scale",
+            profileRef.isVisible && "visible"
+          )}
+        >
           <div className="absolute bottom-0 left-0 w-[calc(100%-2px)] ml-[1px] mb-[1px] aspect-square rounded-full bg-gradient-to-br from-green-20 to-blue-40 shadow-[0px_10px_32px_rgba(44,245,188,0.3)]"/>
           <Image
             src="/images/profile.png"
@@ -17,7 +31,14 @@ const Introduction = () => {
             className="w-full h-auto object-cover relative z-10 rounded-b-full"
           />
         </div>
-        <div className="flex flex-col gap-y-4 sm:gap-y-5">
+        <div 
+          ref={infoRef.elementRef as React.RefObject<HTMLDivElement>}
+          className={cn(
+            "flex flex-col gap-y-4 sm:gap-y-5 scroll-animate-slide-left",
+            infoRef.isVisible && "visible"
+          )}
+          style={{ transitionDelay: "200ms" }}
+        >
           <div className="flex gap-x-4 sm:gap-x-6">
             <ul className="!leading-loose text-sm sm:text-base w-16 sm:w-20">
               <li>이름</li>
@@ -59,7 +80,14 @@ const Introduction = () => {
           </div>
         </div>
       </div>
-      <p className="leading-relaxed sm:leading-loose text-sm sm:text-base md:text-lg text-left max-w-[calc(100%-24px)] lg:max-w-[600px] break-keep">
+      <p 
+        ref={textRef.elementRef as React.RefObject<HTMLParagraphElement>}
+        className={cn(
+          "leading-relaxed sm:leading-loose text-sm sm:text-base md:text-lg text-left max-w-[calc(100%-24px)] lg:max-w-[600px] break-keep scroll-animate-slide-right",
+          textRef.isVisible && "visible"
+        )}
+        style={{ transitionDelay: "400ms" }}
+      >
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-20 to-blue-30">
           안녕하세요. 프론트엔드 개발자 최서원입니다.
         </span><br/>
