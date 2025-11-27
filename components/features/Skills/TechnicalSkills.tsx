@@ -42,7 +42,7 @@ const TechnicalSkills = () => {
             key={button.value} 
             onClick={() => handleLevelButtonClick(button.value)}
             className={cn(
-              "group relative px-5 py-3 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white/20 hover:scale-105 active:scale-95",
+              "group relative px-4 py-2.5 lg:px-5 lg:py-3 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white/20 hover:scale-105 active:scale-95",
               selectedLevel === button.value 
                 ? "text-black shadow-[0px_0px_16px_rgba(71,192,173,0.75)]" 
                 : "text-white"
@@ -65,11 +65,11 @@ const TechnicalSkills = () => {
             />
             
             {/* 텍스트 레이어 */}
-            <span className="relative z-10">{button.label}</span>
+            <span className="relative z-10 text-sm lg:text-base">{button.label}</span>
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-5">
+      <div className="flex flex-wrap gap-5">
         {SKILL_DATA.skills.map((skill) => (
           <SkillIconButton 
             key={skill.name} 

@@ -7,7 +7,7 @@ import { SKILL_DATA } from "@/constant/skill";
 const ToolingAndInfra = () => {
   return <section className="flex flex-col gap-y-8">
     <Title>Tooling & Infra</Title>
-    <div className="grid grid-cols-7 gap-5">
+    <div className="flex flex-wrap gap-5">
       {SKILL_DATA.tools.map((tool) => (
         <SkillIconButton
           key={tool.name} 
