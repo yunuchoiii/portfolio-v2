@@ -1,9 +1,10 @@
 "use client";
 
-import InstagramIcon from "@/assets/icons/instagram.svg";
+import GithubIcon from "@/assets/icons/github.svg";
 import KakaoTalkIcon from "@/assets/icons/kakaotalk.svg";
+import LinkedinIcon from "@/assets/icons/linkedin.svg";
 import IconButton from "@/components/common/Button/IconButton";
-import { EMAIL_LINK, INSTAGRAM_LINK, KAKAO_LINK } from "@/constant/link";
+import { EMAIL_LINK, GITHUB_LINK, KAKAO_LINK, LINKEDIN_LINK } from "@/constant/link";
 import { moveToSection } from "@/lib/navigation";
 import { ArrowDown, Mail } from "lucide-react";
 import Image from "next/image";
@@ -34,6 +35,16 @@ const HomeSection = () => {
         </p>
         <ul className="flex items-center gap-x-3 sm:gap-x-4 md:gap-x-5 flex-wrap gap-y-3">
           <li>
+            <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<GithubIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
+            </a>
+          </li>
+          <li>
+            <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<LinkedinIcon className="size-5 sm:size-6 md:size-7 lg:size-8" />} />
+            </a>
+          </li>
+          <li>
             <a href={EMAIL_LINK} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<Mail className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
             </a>
@@ -41,11 +52,6 @@ const HomeSection = () => {
           <li>
             <a href={KAKAO_LINK} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<KakaoTalkIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
-            </a>
-          </li>
-          <li>
-            <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer">
-              <IconButton icon={<InstagramIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
             </a>
           </li>
           <li>
