@@ -12,6 +12,10 @@ const TechnicalSkills = () => {
 
   const levelButtons = [
     {
+      label: "All",
+      value: null,
+    },
+    {
       label: "Expert",
       value: SkillLevel.Expert,
     },
@@ -40,11 +44,11 @@ const TechnicalSkills = () => {
         {levelButtons.map((button) => (
           <button 
             key={button.value} 
-            onClick={() => handleLevelButtonClick(button.value)}
+            onClick={() => handleLevelButtonClick(button.value as SkillLevel)}
             className={cn(
-              "group relative px-4 py-2.5 lg:px-5 lg:py-3 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white/20 hover:scale-105 active:scale-95",
+              "group relative min-w-[60px] flex items-center justify-center px-4 py-2.5 lg:px-5 lg:py-3 rounded-full transition-all md:duration-300 ease-in-out hover:ring-2 hover:ring-white/20 hover:scale-105 active:scale-90",
               selectedLevel === button.value 
-                ? "text-black shadow-[0px_0px_16px_rgba(71,192,173,0.75)]" 
+                ? "text-black font-medium shadow-[0px_0px_16px_rgba(71,192,173,0.75)]" 
                 : "text-white"
             )}
           >
