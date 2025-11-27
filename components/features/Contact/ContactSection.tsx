@@ -21,7 +21,7 @@ const ContactSection = () => {
           )}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold italic font-poppins leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-green-20 to-blue-40 pr-2 text-center">
-            Let's Talk!
+            Let&apos;s Talk!
           </h1>
           <p className="text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose text-center break-keep">
             더 나은 방향을 함께 고민하고 만들어갈 팀을 기다리고 있습니다.<br/>
