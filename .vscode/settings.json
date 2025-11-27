@@ -1,0 +1,36 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["className\\s*[:=]\\s*[\"'`]([^\"'`]*)[\"'`]", "([^\\s]*)"],
+    ["class\\s*[:=]\\s*[\"'`]([^\"'`]*)[\"'`]", "([^\\s]*)"],
+    ["tw`([^`]*)", "([^\\s]*)"],
+    ["tw\\.[^`]*`([^`]*)", "([^\\s]*)"]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/.next/**"
+  ],
+  "tailwindCSS.experimental.configFile": "./tailwind.config.ts",
+  "tailwindCSS.validate": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.suggestions": true,
+  "tailwindCSS.hovers": true,
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.lint.invalidApply": "error",
+  "tailwindCSS.lint.invalidScreen": "error",
+  "tailwindCSS.lint.invalidTailwindDirective": "error",
+  "tailwindCSS.lint.invalidVariant": "error",
+  "tailwindCSS.lint.recommendedVariantOrder": "warning",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.wordWrap": "on",
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  }
+}
+
