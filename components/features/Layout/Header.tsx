@@ -34,68 +34,82 @@ const MenuLink = ({ href, children, onClick, active }: { href: string, children:
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState<Menu | null>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const isProgrammaticScrollRef = useRef(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // 모든 섹션 요소를 관찰하기 위한 Intersection Observer 설정
-    const observerOptions = {
-      root: null, // 뷰포트를 기준으로
-      rootMargin: '-20% 0px -70% 0px', // 상단 20% 지점부터 하단 70% 지점까지를 활성화 영역으로 설정
-      threshold: 0, // 요소가 조금이라도 보이면 감지
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // 프로그래밍 방식 스크롤 중일 때는 observer 콜백 무시
+    // 스크롤 위치 기반으로 활성 섹션 결정
+    const updateActiveSection = () => {
+      // 프로그래밍 방식 스크롤 중일 때는 업데이트 무시
       if (isProgrammaticScrollRef.current) {
         return;
       }
 
-      // 현재 뷰포트에 보이는 섹션들 중에서 가장 많이 보이는 섹션 찾기
-      let maxVisibleRatio = 0;
-      let mostVisibleSection: Menu | null = null;
+      const scrollPosition = window.scrollY + window.innerHeight * 0.3; // 뷰포트 상단 30% 지점
+      let activeSection: Menu | null = null;
 
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const visibleRatio = entry.intersectionRatio;
-          if (visibleRatio > maxVisibleRatio) {
-            maxVisibleRatio = visibleRatio;
-            const sectionId = entry.target.id;
-            // menuList에서 해당 id와 일치하는 메뉴 찾기
-            const matchedMenu = menuList.find(
-              (menu) => menu.href.replace('#', '') === sectionId
-            );
-            if (matchedMenu) {
-              mostVisibleSection = matchedMenu.label as Menu;
-            }
+      // 모든 섹션을 확인하여 현재 스크롤 위치에 가장 적합한 섹션 찾기
+      for (let i = menuList.length - 1; i >= 0; i--) {
+        const menu = menuList[i];
+        const sectionId = menu.href.replace('#', '');
+        const sectionElement = document.getElementById(sectionId);
+        
+        if (sectionElement) {
+          const sectionTop = sectionElement.offsetTop;
+          const sectionBottom = sectionTop + sectionElement.offsetHeight;
+          
+          // 스크롤 위치가 섹션 범위 내에 있거나, 섹션을 지나갔지만 다음 섹션에 아직 도달하지 않은 경우
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            activeSection = menu.label as Menu;
+            break;
+          }
+          // 스크롤 위치가 섹션보다 위에 있지만, 이전 섹션들을 모두 지나간 경우 (첫 번째 섹션)
+          if (i === 0 && scrollPosition < sectionTop) {
+            activeSection = menu.label as Menu;
+            break;
           }
         }
-      });
+      }
 
-      // 가장 많이 보이는 섹션이 있으면 활성화
-      if (mostVisibleSection) {
-        setActiveSection(mostVisibleSection);
+      // 위에서 찾지 못한 경우, 가장 가까운 섹션 찾기
+      if (!activeSection) {
+        let closestSection: Menu | null = null;
+        let minDistance = Infinity;
+
+        menuList.forEach((menu) => {
+          const sectionId = menu.href.replace('#', '');
+          const sectionElement = document.getElementById(sectionId);
+          if (sectionElement) {
+            const sectionTop = sectionElement.offsetTop;
+            const distance = Math.abs(sectionTop - scrollPosition);
+            
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestSection = menu.label as Menu;
+            }
+          }
+        });
+
+        if (closestSection) {
+          activeSection = closestSection;
+        }
+      }
+
+      if (activeSection) {
+        setActiveSection(activeSection);
       }
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    observerRef.current = observer;
+    // 초기 활성 섹션 설정
+    updateActiveSection();
 
-    // 모든 섹션 요소 관찰 시작
-    menuList.forEach((menu) => {
-      const sectionId = menu.href.replace('#', '');
-      const sectionElement = document.getElementById(sectionId);
-      if (sectionElement) {
-        observer.observe(sectionElement);
-      }
-    });
-
-    // 스크롤 완료 감지
+    // 스크롤 이벤트 핸들러
     const handleScroll = () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
+      
+      updateActiveSection();
       
       scrollTimeoutRef.current = setTimeout(() => {
         // 스크롤이 완료되면 observer 다시 활성화
@@ -105,10 +119,13 @@ const Header = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // 컴포넌트 언마운트 시 observer 정리
+    // 리사이즈 이벤트도 처리 (레이아웃 변경 시)
+    window.addEventListener('resize', updateActiveSection, { passive: true });
+
+    // 컴포넌트 언마운트 시 정리
     return () => {
-      observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateActiveSection);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
@@ -192,7 +209,7 @@ const Header = () => {
                   href={menu.href} 
                   className={`group h-8 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out overflow-hidden ${
                     isActive 
-                      ? "bg-gradient-to-br from-green-20/20 to-blue-40/20 border border-green-20/50 shadow-[0px_0px_16px_rgba(44,245,153,0.3)] w-24 px-3 min-w-[32px]" 
+                      ? "bg-gradient-to-br from-green-20/20 to-blue-40/20 border border-green-20/50 shadow-[0px_0px_16px_rgba(44,245,153,0.3)] w-24 min-w-[32px]" 
                       : "w-8 border border-transparent active:bg-white/10"
                   }`}
                   onClick={(e) => {
@@ -200,13 +217,13 @@ const Header = () => {
                   }}
                   replace
                 >
-                  <div className="flex items-center">
-                    <Icon className={`size-4 flex-shrink-0 transition-colors duration-300 ${
+                  <div className="relative w-full">
+                    <Icon className={`size-4 flex-shrink-0 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 ${
                       isActive 
-                        ? "text-white" 
-                        : "text-white/60 group-active:text-white/80 group-active:scale-90"
+                        ? "left-2 text-white" 
+                        : "left-1/2 -translate-x-1/2 text-white/60 group-active:text-white/80 group-active:scale-90"
                     }`} />
-                    <span className={`text-xs font-medium whitespace-nowrap transition-all duration-300 ease-in-out ${
+                    <span className={`text-xs font-medium whitespace-nowrap transition-all duration-300 ease-in-out absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full pl-2 text-center ${
                       isActive 
                         ? "opacity-100 max-w-[80px] ml-1.5" 
                         : "opacity-0 max-w-0"
