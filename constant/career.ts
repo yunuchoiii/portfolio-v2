@@ -4,7 +4,8 @@ import { Career } from "@/types/career";
 
 export const CAREER_LIST: Career[] = [
   {
-    company: "(주)스터디워크",
+    kor_name: "(주)스터디워크",
+    eng_name: "StudyWork",
     department: "개발팀",
     position: "웹 개발자",
     period: {
@@ -24,7 +25,8 @@ export const CAREER_LIST: Career[] = [
     icon: PtsIcon,
   },
   {
-    company: "메디푸드플랫폼",
+    kor_name: "메디푸드플랫폼",
+    eng_name: "MediFoodPlatform",
     department: "플랫폼개발부",
     position: "사원·프론트엔드 개발자",
     period: {
