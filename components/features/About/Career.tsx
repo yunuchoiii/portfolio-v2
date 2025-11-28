@@ -69,8 +69,9 @@ const Career = () => {
             key={career.eng_name} 
             career={career} 
             delay={(isSearching ? index + 1 : index) * 100}
-            children={career.kor_name === "(주)스터디워크" ? <ExtraSubscription /> : null}
-          />
+          >
+            {career.kor_name === "(주)스터디워크" ? <ExtraSubscription /> : null}
+          </AnimatedCareerCard>
         ))}
       </div>
     </section>
