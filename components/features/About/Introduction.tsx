@@ -83,7 +83,7 @@ const Introduction = () => {
       <p 
         ref={textRef.elementRef as React.RefObject<HTMLParagraphElement>}
         className={cn(
-          "leading-relaxed sm:leading-loose text-sm sm:text-base md:text-lg text-left max-w-[calc(100%-24px)] lg:max-w-[600px] break-keep scroll-animate-slide-right",
+          "!leading-loose text-sm sm:text-base md:text-lg text-left max-w-[calc(100%-24px)] lg:max-w-[600px] break-keep scroll-animate-slide-right",
           textRef.isVisible && "visible"
         )}
         style={{ transitionDelay: "400ms" }}

@@ -1,4 +1,4 @@
-export const moveToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string, onClick: () => void) => {
+export const moveToSection = (e: React.MouseEvent<HTMLElement>, href: string, onClick: () => void) => {
   e.preventDefault();
   
   // href에서 id 추출 (# 제거)

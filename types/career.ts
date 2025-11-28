@@ -1,7 +1,8 @@
 import { ComponentType } from "react";
 
 export interface Career {
-  company: string;
+  kor_name: string;
+  eng_name: string;
   department: string;
   position: string;
   period: {
