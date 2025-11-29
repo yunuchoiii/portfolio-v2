@@ -28,7 +28,8 @@ const HomeSection = () => {
     >
       <Image
         src="/images/background_lines.png"
-        alt="background lines"
+        alt=""
+        aria-hidden="true"
         width={1000}
         height={1000}
         ref={backgroundRef.elementRef as React.RefObject<HTMLImageElement>}
