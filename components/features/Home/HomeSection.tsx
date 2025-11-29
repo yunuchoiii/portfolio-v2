@@ -5,6 +5,7 @@ import KakaoTalkIcon from "@/assets/icons/kakaotalk.svg";
 import LinkedinIcon from "@/assets/icons/linkedin.svg";
 import IconButton from "@/components/common/Button/IconButton";
 import { EMAIL_LINK, GITHUB_LINK, KAKAO_LINK, LINKEDIN_LINK } from "@/constant/link";
+import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
 import { moveToSection } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { ArrowDown, Mail } from "lucide-react";
@@ -14,6 +15,7 @@ import { useEffect, useState } from "react";
 
 const HomeSection = () => {
   const [mounted, setMounted] = useState(false);
+  const backgroundRef = useScrollAnimation();
 
   useEffect(() => {
     setMounted(true);
@@ -26,10 +28,15 @@ const HomeSection = () => {
     >
       <Image
         src="/images/background_lines.png"
-        alt="background lines"
+        alt=""
+        aria-hidden="true"
         width={1000}
         height={1000}
-        className="absolute bottom-0 left-0 w-full h-full object-cover"
+        ref={backgroundRef.elementRef as React.RefObject<HTMLImageElement>}
+        className={cn(
+          "absolute bottom-0 left-0 w-full h-full object-cover transition-all duration-1000 ease-out",
+          backgroundRef.isVisible ? "scale-100 opacity-100" : "scale-150 opacity-0"
+        )}
       />
       <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 lg:left-[20%] lg:translate-x-0 px-4 sm:px-6 md:px-12 flex flex-col gap-y-10 w-full max-w-[90%] sm:max-w-[85%] md:max-w-none">
         <h1 className="w-fit text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-extrabold italic font-poppins leading-none tracking-tight whitespace-nowrap">

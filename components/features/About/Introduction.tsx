@@ -25,7 +25,7 @@ const Introduction = () => {
           <div className="absolute bottom-0 left-0 w-[calc(100%-2px)] ml-[1px] mb-[1px] aspect-square rounded-full bg-gradient-to-br from-green-20 to-blue-40 shadow-[0px_10px_32px_rgba(44,245,188,0.3)]"/>
           <Image
             src="/images/profile.png"
-            alt="profile"
+            alt="프론트엔드 개발자 최서원 프로필 사진"
             width={1000}
             height={1000}
             className="w-full h-auto object-cover relative z-10 rounded-b-full"
