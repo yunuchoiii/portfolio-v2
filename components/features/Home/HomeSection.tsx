@@ -32,6 +32,7 @@ const HomeSection = () => {
         aria-hidden="true"
         width={1000}
         height={1000}
+        priority
         ref={backgroundRef.elementRef as React.RefObject<HTMLImageElement>}
         className={cn(
           "absolute bottom-0 left-0 w-full h-full object-cover transition-all duration-1000 ease-out",
