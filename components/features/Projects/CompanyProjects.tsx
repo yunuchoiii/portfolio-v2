@@ -3,7 +3,6 @@
 import Title from "@/components/common/Typography/Title";
 import { COMPANY_PROJECT_LIST } from "@/constant/project";
 import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
-import { moveToSection } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { Project, ProjectCompany } from "@/types/project";
 import ProjectCard from "./ProjectCard";
@@ -30,7 +29,6 @@ const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
             ptsBannerRef.isVisible && "visible"
           )}
           style={{ backgroundImage: `url("/images/projects/PTS/banner.png")` }}
-          onClick={(e) => moveToSection(e, "#studywork", () => {})}
         />
         <div className="flex flex-col gap-y-5 flex-1 min-w-0">
           {PTS_PROJECTS.map((project, index) => (
@@ -51,7 +49,6 @@ const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
             mfpBannerRef.isVisible && "visible"
           )}
           style={{ backgroundImage: `url("/images/projects/MFP/banner.png")` }}
-          onClick={(e) => moveToSection(e, "#medifoodplatform", () => {})}
         />
         <div className="flex flex-col gap-y-5 flex-1 min-w-0">
           {MFP_PROJECTS.map((project, index) => (
