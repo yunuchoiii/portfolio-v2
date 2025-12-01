@@ -325,7 +325,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               e.stopPropagation();
               handlePrevious();
             }}
-            className="absolute left-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
+            className="h-fit absolute left-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="이전 이미지"
           >
             <ChevronLeft className="size-10" />
@@ -336,20 +336,20 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               e.stopPropagation();
               handleNext();
             }}
-            className="absolute right-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
+            className="h-fit absolute right-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="다음 이미지"
           >
             <ChevronRight className="size-10" />
           </button>
 
           <div
-            className="relative size-full flex items-center justify-center"
+            className="relative max-w-[calc(100%-48px)] sm:max-w-[calc(100%-176px)] h-[calc(100vh-128px)] flex items-center justify-center overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={imageList[lightboxIndex]}
               alt={`${displayProject.title} 이미지 ${lightboxIndex + 1}`}
-              className="max-w-[calc(100%-48px)] sm:max-w-[calc(100%-128px)] sm:max-h-[calc(100vh-128px)] object-contain"
+              className="max-w-full max-h-full w-auto h-auto object-contain"
             />
           </div>
 

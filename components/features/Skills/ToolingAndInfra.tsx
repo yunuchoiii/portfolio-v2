@@ -2,7 +2,7 @@
 
 import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
 import { cn } from "@/lib/utils";
-import SkillIconButton from "@/components/common/Button/SkillIconButton";
+import SkillIconButton from "@/components/common/Icon/SkillIcon";
 import Title from "@/components/common/Typography/Title";
 import { SKILL_DATA } from "@/constant/skill";
 
