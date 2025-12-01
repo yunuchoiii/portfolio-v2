@@ -19,6 +19,45 @@ interface ProjectDetailModalProps {
   onClose: () => void;
 }
 
+const GallerySkeleton = () => {
+  return (
+    <div className="flex flex-col gap-y-3">
+      <div className="grid grid-cols-3 gap-x-4 h-[150px]">
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </div>
+      <div className="grid grid-cols-4 gap-x-4 h-[120px]">
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </div>
+    </div>
+  );
+};
+
+const NotionSkeleton = () => {
+  return (
+    <div className="flex flex-col gap-y-3">
+      <Skeleton width={200} height={20}/>
+      <Skeleton width={450} height={20}/>
+      <Skeleton width={500} height={20}/>
+      <Skeleton width={100} height={20}/>
+      <Skeleton width={500} height={20}/>
+      <Skeleton width={600} height={20}/>
+      <Skeleton width={500} height={20}/>
+      <Skeleton width={200} height={20}/>
+      <Skeleton width={450} height={20}/>
+      <Skeleton width={500} height={20}/>
+      <Skeleton width={100} height={20}/>
+      <Skeleton width={500} height={20}/>
+      <Skeleton width={600} height={20}/>
+      <Skeleton width={500} height={20}/>
+    </div>
+  );
+};
+
 const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
@@ -235,9 +274,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
                     }}
                   />
                 ) : (
-                  <div className="flex items-center justify-center py-20">
-                    <p className="text-gray-400">이미지 로딩 중...</p>
-                  </div>
+                  <GallerySkeleton />
                 )}
               </div>
             </div>
@@ -246,22 +283,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
           {displayProject.notionLink && (
             <div className="min-h-0 rounded-lg notion-container">
               {isLoading ? (
-                <div className="flex flex-col gap-y-3">
-                  <Skeleton width={200} height={20}/>
-                  <Skeleton width={450} height={20}/>
-                  <Skeleton width={500} height={20}/>
-                  <Skeleton width={100} height={20}/>
-                  <Skeleton width={500} height={20}/>
-                  <Skeleton width={600} height={20}/>
-                  <Skeleton width={500} height={20}/>
-                  <Skeleton width={200} height={20}/>
-                  <Skeleton width={450} height={20}/>
-                  <Skeleton width={500} height={20}/>
-                  <Skeleton width={100} height={20}/>
-                  <Skeleton width={500} height={20}/>
-                  <Skeleton width={600} height={20}/>
-                  <Skeleton width={500} height={20}/>
-                </div>
+                <NotionSkeleton />
               ) : recordMap ? (
                 <NotionRenderer
                   recordMap={recordMap}
