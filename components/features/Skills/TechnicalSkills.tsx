@@ -51,7 +51,7 @@ const TechnicalSkills = () => {
     >
       <Title>Technical Skills</Title>
     </div>
-    <div className="flex flex-col gap-y-5">
+    <div className="flex flex-col gap-y-5 p-10 -m-10">
       <div
         ref={buttonsRef.elementRef as React.RefObject<HTMLDivElement>}
         className={cn(
