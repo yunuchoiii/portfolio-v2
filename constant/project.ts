@@ -190,8 +190,8 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
       start: "2025.11",
       end: "2025.11",
     },
-    notionLink: "https://www.notion.so/yunuchoiii/SaaS-2b5c22b00eb680698e1df87f9c70eb14?source=copy_link",
-    notionId: "2b5c22b00eb680698e1df87f9c70eb14",
+    notionLink: "https://www.notion.so/yunuchoiii/2b5c22b00eb68019888af9d1c2daf2b8?source=copy_link",
+    notionId: "2b5c22b00eb68019888af9d1c2daf2b8",
   },
   {
     title: "JJH 수학학원 홈페이지",

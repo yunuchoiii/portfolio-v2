@@ -193,7 +193,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
       style={{ perspective: "1000px" }}
     >
       <div
-        className={`relative bg-[#202020]/75 rounded-[30px] px-6 sm:px-8 md:px-12 lg:px-[60px] py-[45px] 2xl:max-w-5xl sm:max-w-[80%] max-w-[calc(100%-24px)] w-full max-h-[85%] h-full shadow-[0_0_120px_rgba(0,0,0,0.5)] backdrop-blur-[80px] ${
+        className={`relative bg-[#202020]/75 rounded-[30px] px-6 sm:px-8 md:px-12 lg:px-[60px] py-[45px] max-w-[calc(100%-24px)] sm:max-w-[80%] w-full max-h-[calc(100vh-48px)] h-full shadow-[0_0_120px_rgba(0,0,0,0.5)] backdrop-blur-[80px] ${
           isClosing ? "animate-flip-out-hor-top" : "animate-flip-in-hor-top"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -325,7 +325,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               e.stopPropagation();
               handlePrevious();
             }}
-            className="absolute left-0 p-6 top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
+            className="absolute left-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="이전 이미지"
           >
             <ChevronLeft className="size-10" />
@@ -336,20 +336,20 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               e.stopPropagation();
               handleNext();
             }}
-            className="absolute right-0 p-6 top-1/2 -translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
+            className="absolute right-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="다음 이미지"
           >
             <ChevronRight className="size-10" />
           </button>
 
           <div
-            className="relative max-w-[calc(100%-128px)] max-h-[90vh] flex items-center justify-center"
+            className="relative size-full flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={imageList[lightboxIndex]}
               alt={`${displayProject.title} 이미지 ${lightboxIndex + 1}`}
-              className="max-w-full max-h-[90vh] object-contain"
+              className="max-w-[calc(100%-48px)] sm:max-w-[calc(100%-128px)] sm:max-h-[calc(100vh-128px)] object-contain"
             />
           </div>
 
