@@ -1,6 +1,6 @@
 "use client";
 
-import SkillIconButton from "@/components/common/Button/SkillIconButton";
+import SkillIcon from "@/components/common/Icon/SkillIcon";
 import Title from "@/components/common/Typography/Title";
 import { SKILL_DATA } from "@/constant/skill";
 import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
@@ -101,7 +101,7 @@ const TechnicalSkills = () => {
         style={{ transitionDelay: "200ms" }}
       >
         {SKILL_DATA.skills.map((skill) => (
-          <SkillIconButton 
+          <SkillIcon 
             key={skill.name} 
             active={selectedLevel ? selectedLevel === skill.level : true} 
             {...skill} 
