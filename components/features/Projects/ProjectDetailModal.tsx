@@ -193,7 +193,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
       style={{ perspective: "1000px" }}
     >
       <div
-        className={`relative bg-[#202020]/75 rounded-[30px] px-6 sm:px-8 md:px-12 lg:px-[60px] py-[45px] 2xl:max-w-5xl sm:max-w-[80%] max-w-[calc(100%-24px)] w-full max-h-[85%] h-full shadow-[0_0_120px_rgba(0,0,0,0.5)] backdrop-blur-[80px] ${
+        className={`relative bg-[#202020]/75 rounded-[30px] px-6 sm:px-8 md:px-12 lg:px-[60px] py-[45px] max-w-[calc(100%-24px)] sm:max-w-[80%] w-full max-h-[calc(100vh-48px)] h-full shadow-[0_0_120px_rgba(0,0,0,0.5)] backdrop-blur-[80px] ${
           isClosing ? "animate-flip-out-hor-top" : "animate-flip-in-hor-top"
         }`}
         onClick={(e) => e.stopPropagation()}
