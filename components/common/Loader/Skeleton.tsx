@@ -1,8 +1,8 @@
-const Skeleton = ({ width, height }: { width: number; height: number }) => {
+const Skeleton = ({ width, height }: { width?: number; height?: number }) => {
   return (
     <div 
       className={`bg-white/10 animate-pulse rounded-md`}
-      style={{ width: `${width}px`, height: `${height}px` }}
+      style={{ width: width ? `${width}px` : "100%", height: height ? `${height}px` : "100%" }}
     />
   );
 };
