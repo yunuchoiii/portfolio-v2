@@ -19,4 +19,5 @@ export interface Project {
   notionId?: string;
   githubLink?: string;
   company?: string;
+  deployedLink?: string;
 }
