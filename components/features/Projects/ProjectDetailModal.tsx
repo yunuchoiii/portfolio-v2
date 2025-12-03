@@ -6,7 +6,7 @@ import { getSkillByEnum } from "@/constant/skill";
 import { formatNotionPageId } from "@/lib/notion";
 import { Project } from "@/types/project";
 import { SkillEnum } from "@/types/skill";
-import { ChevronLeft, ChevronRight, XIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, LinkIcon, XIcon } from "lucide-react";
 import { ExtendedRecordMap } from "notion-types";
 import "prismjs/themes/prism-tomorrow.css";
 import { useEffect, useState } from "react";
@@ -212,10 +212,17 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
           <XIcon className="md:size-8 size-6" />
         </button>
         <div className="flex flex-col gap-y-5 h-full overflow-y-auto scrollbar-hide">
-          <div className="flex flex-col gap-y-5 flex-shrink-0">
-            <h2 className="text-2xl font-semibold">
-              {displayProject.title}
-            </h2>
+          <div className="flex flex-col gap-y-3 flex-shrink-0">
+            <div className="flex items-center gap-x-1.5">
+              <h2 className="text-2xl font-semibold">
+                {displayProject.title}
+              </h2>
+              {displayProject.deployedLink && (
+                <a href={displayProject.deployedLink} target="_blank" rel="noopener noreferrer" className="size-8 rounded-full flex items-center justify-center transition-colors hover:bg-white/10">
+                  <LinkIcon className="size-5" />
+                </a>
+              )}
+            </div>
             <p>
               {displayProject.period?.start} - {displayProject.period?.end}
             </p>

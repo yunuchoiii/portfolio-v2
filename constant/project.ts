@@ -59,6 +59,7 @@ export const COMPANY_PROJECT_LIST:Project[] = [
     notionLink: "https://www.notion.so/yunuchoiii/2b4c22b00eb680c2a5eff2efd18220f4?source=copy_link",
     notionId: "2b4c22b00eb680c2a5eff2efd18220f4",
     company: ProjectCompany.PTS,
+    deployedLink: "https://pts-b2c-yunuchoiiii-code.vercel.app/",
   },
   {
     title: "위드파타스 웹뷰",
@@ -229,6 +230,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
     },
     notionLink: "https://www.notion.so/yunuchoiii/JJH-2b5c22b00eb6804b9ab7f001dc943819?source=copy_link",
     notionId: "2b5c22b00eb6804b9ab7f001dc943819",
+    deployedLink: "https://jjhmath.com/",
   },
   {
     title: "NextMovie",
@@ -254,6 +256,7 @@ export const PERSONAL_PROJECT_LIST:Project[] = [
     },
     notionLink: "https://www.notion.so/yunuchoiii/NextMovie-2b5c22b00eb680db9404d4f3aa837d71?source=copy_link",
     notionId: "2b5c22b00eb680db9404d4f3aa837d71",
+    deployedLink: "https://yunu-next-movie.vercel.app/",
   },
   {
     title: "YMDB",
