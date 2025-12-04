@@ -15,7 +15,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
     <button 
       key={project.title}
       onClick={onClick}
-      className="group w-full h-full relative rounded-[20px] sm:rounded-[28px] md:rounded-[32px] lg:rounded-[40px] overflow-hidden active:scale-95 active:brightness-75 transition-all duration-200 ease-in-out"
+      className="group w-full h-full relative rounded-[16px] sm:rounded-[28px] md:rounded-[32px] lg:rounded-[40px] overflow-hidden active:scale-95 active:brightness-75 transition-all duration-200 ease-in-out"
     >
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
