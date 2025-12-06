@@ -64,6 +64,8 @@ const TechnicalSkills = () => {
           <button 
             key={button.value} 
             onClick={() => handleLevelButtonClick(button.value as SkillLevel)}
+            aria-label={`${button.label} 레벨 필터${selectedLevel === button.value ? ' 선택됨' : ''}`}
+            aria-pressed={selectedLevel === button.value}
             className={cn(
               "group relative min-w-[60px] flex items-center justify-center px-4 py-2.5 lg:px-5 lg:py-3 rounded-full transition-all md:duration-300 ease-in-out hover:ring-2 hover:ring-white/20 hover:scale-105 active:scale-90",
               selectedLevel === button.value 

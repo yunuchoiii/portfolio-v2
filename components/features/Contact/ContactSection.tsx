@@ -27,20 +27,24 @@ const ContactSection = () => {
             더 나은 방향을 함께 고민하고 만들어갈 팀을 기다리고 있습니다.<br/>
             함께 만들고 싶은 무언가가 떠오르셨다면, 편하게 제안해 주세요.
           </p>
-          <a href={EMAIL_LINK} target="_blank" rel="noopener noreferrer">
-            <button className="group w-[120px] sm:w-[130px] md:w-[140px] h-12 sm:h-[52px] md:h-14 rounded-full bg-gradient-to-br from-green-20 to-blue-40 flex items-center justify-center p-0.5 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] hover:shadow-[0px_0px_24px_rgba(30,214,184,0.5)] hover:scale-105 active:scale-95 transition-all md:duration-300 ease-in-out">
-              <div className="w-full h-full pl-1 rounded-full bg-[radial-gradient(circle_at_center,#1f1f1f,#1b1b1b)] backdrop-blur flex items-center justify-center gap-x-1 sm:gap-x-1.5">
-                <span className="font-medium text-xs sm:text-sm whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-green-20 to-blue-30">
-                  메일 보내기
-                </span>
-                <Mail className="size-5 sm:size-6 text-blue-30" />
-              </div>
-            </button>
+          <a 
+            href={EMAIL_LINK} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group w-[120px] sm:w-[130px] md:w-[140px] h-12 sm:h-[52px] md:h-14 rounded-full bg-gradient-to-br from-green-20 to-blue-40 flex items-center justify-center p-0.5 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] hover:shadow-[0px_0px_24px_rgba(30,214,184,0.5)] hover:scale-105 active:scale-95 transition-all md:duration-300 ease-in-out"
+            aria-label="이메일 보내기"
+          >
+            <div className="w-full h-full pl-1 rounded-full bg-[radial-gradient(circle_at_center,#1f1f1f,#1b1b1b)] backdrop-blur flex items-center justify-center gap-x-1 sm:gap-x-1.5">
+              <span className="font-medium text-xs sm:text-sm whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-green-20 to-blue-30">
+                메일 보내기
+              </span>
+              <Mail className="size-5 sm:size-6 text-blue-30" aria-hidden="true" />
+            </div>
           </a>
         </div>
       </div>
       <footer className="w-full h-10 absolute bottom-0 left-0 bg-[#090D0C]/40 flex items-center justify-center">
-        <p className="text-xs text-white/50">© 2025 Seowon Choi. All rights reserved.</p>
+        <p className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>© 2025 Seowon Choi. All rights reserved.</p>
       </footer>
     </section>
   );

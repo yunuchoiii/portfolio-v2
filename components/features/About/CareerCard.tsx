@@ -36,6 +36,7 @@ const CareerCard = ({ career, children }: { career?: Career; children?: React.Re
         </ul>
         <Icon 
           className="absolute bottom-6 sm:bottom-7 md:bottom-8 right-6 sm:right-7 md:right-8 size-28 sm:size-32 md:size-[150px] object-contain text-white/20"
+          aria-hidden="true"
         />
       </div>
       {children}
