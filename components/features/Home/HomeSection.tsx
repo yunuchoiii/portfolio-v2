@@ -89,7 +89,7 @@ const HomeSection = () => {
             제가 어떤 고민을 해왔는지, 이 곳에서 확인해보세요.
           </span>
         </p>
-        <ul className="flex flex-col md:flex-row items-start md:items-center gap-x-3 sm:gap-x-4 md:gap-x-5 flex-wrap gap-y-3">
+        <ul className="flex flex-rowitems-center gap-x-3 sm:gap-x-4 md:gap-x-5 flex-wrap gap-y-3">
           <li
             className={cn(
               "transition-all duration-500 ease-out",
