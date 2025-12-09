@@ -89,53 +89,51 @@ const HomeSection = () => {
             제가 어떤 고민을 해왔는지, 이 곳에서 확인해보세요.
           </span>
         </p>
-        <ul className="flex flex-col md:flex-row items-start md:items-center gap-x-3 sm:gap-x-4 md:gap-x-5 flex-wrap gap-y-3">
-          <div className="flex gap-x-3 sm:gap-x-4 md:gap-x-5">
-            <li
-              className={cn(
-                "transition-all duration-500 ease-out",
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-              style={{ transitionDelay: "1.3s" }}
-            >
-              <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
-                <IconButton icon={<GithubIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
-              </a>
-            </li>
-            <li
-              className={cn(
-                "transition-all duration-500 ease-out",
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-              style={{ transitionDelay: "1.4s" }}
-            >
-              <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer">
-                <IconButton icon={<LinkedinIcon className="size-5 sm:size-6 md:size-7 lg:size-8" />} />
-              </a>
-            </li>
-            <li
-              className={cn(
-                "transition-all duration-500 ease-out",
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-              style={{ transitionDelay: "1.5s" }}
-            >
-              <a href={EMAIL_LINK} target="_blank" rel="noopener noreferrer">
-                <IconButton icon={<Mail className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
-              </a>
-            </li>
-            <li
-              className={cn(
-                "transition-all duration-500 ease-out",
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-              style={{ transitionDelay: "1.6s" }}
-            >
-              <a href={KAKAO_LINK} target="_blank" rel="noopener noreferrer">
-                <IconButton icon={<KakaoTalkIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} />
-              </a>
-            </li>
-          </div>
+        <ul className="flex flex-rowitems-center gap-x-3 sm:gap-x-4 md:gap-x-5 flex-wrap gap-y-3">
+          <li
+            className={cn(
+              "transition-all duration-500 ease-out",
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{ transitionDelay: "1.3s" }}
+          >
+            <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer" aria-label="GitHub 프로필 열기">
+              <IconButton icon={<GithubIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} aria-label="GitHub" />
+            </a>
+          </li>
+          <li
+            className={cn(
+              "transition-all duration-500 ease-out",
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{ transitionDelay: "1.4s" }}
+          >
+            <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn 프로필 열기">
+              <IconButton icon={<LinkedinIcon className="size-5 sm:size-6 md:size-7 lg:size-8" />} aria-label="LinkedIn" />
+            </a>
+          </li>
+          <li
+            className={cn(
+              "transition-all duration-500 ease-out",
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{ transitionDelay: "1.5s" }}
+          >
+            <a href={EMAIL_LINK} target="_blank" rel="noopener noreferrer" aria-label="이메일 보내기">
+              <IconButton icon={<Mail className="size-6 sm:size-7 md:size-8 lg:size-9" />} aria-label="이메일" />
+            </a>
+          </li>
+          <li
+            className={cn(
+              "transition-all duration-500 ease-out",
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{ transitionDelay: "1.6s" }}
+          >
+            <a href={KAKAO_LINK} target="_blank" rel="noopener noreferrer" aria-label="카카오톡 채널 열기">
+              <IconButton icon={<KakaoTalkIcon className="size-6 sm:size-7 md:size-8 lg:size-9" />} aria-label="카카오톡" />
+            </a>
+          </li>
           <li
             className={cn(
               "transition-all duration-500 ease-out",
@@ -147,14 +145,14 @@ const HomeSection = () => {
               href="#about" 
               replace 
               onClick={(e) => moveToSection(e, "#about", () => {})}
+              className="group w-[120px] sm:w-[130px] md:w-[140px] h-10 sm:h-11 md:h-12 lg:h-14 rounded-full bg-gradient-to-br from-green-20 to-blue-40 flex items-center justify-center p-0.5 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] hover:shadow-[0px_0px_24px_rgba(30,214,184,0.5)] hover:scale-105 active:scale-95 transition-all md:duration-300 ease-in-out"
+              aria-label="더 알아보기 - About 섹션으로 이동"
             >
-              <div className="group w-[120px] sm:w-[130px] md:w-[140px] h-10 sm:h-11 md:h-12 lg:h-14 rounded-full bg-gradient-to-br from-green-20 to-blue-40 flex items-center justify-center p-0.5 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] hover:shadow-[0px_0px_24px_rgba(30,214,184,0.5)] hover:scale-105 active:scale-95 transition-all md:duration-300 ease-in-out">
-                <div className="w-full h-full pl-1 rounded-full bg-[radial-gradient(circle_at_center,#3b3e3e,#333737)] backdrop-blur flex items-center justify-center gap-x-1 sm:gap-x-1.5">
-                  <span className="font-medium text-xs sm:text-sm md:text-base whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-green-20 to-blue-30">
-                    더 알아보기
-                  </span>
-                  <ArrowDown className="size-4 sm:size-5 md:size-6 text-blue-30" />
-                </div>
+              <div className="w-full h-full pl-1 rounded-full bg-[radial-gradient(circle_at_center,#3b3e3e,#333737)] backdrop-blur flex items-center justify-center gap-x-1 sm:gap-x-1.5">
+                <span className="font-medium text-xs sm:text-sm md:text-base whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-green-20 to-blue-30">
+                  더 알아보기
+                </span>
+                <ArrowDown className="size-4 sm:size-5 md:size-6 text-blue-30" aria-hidden="true" />
               </div>
             </Link>
           </li>

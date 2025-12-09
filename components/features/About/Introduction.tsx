@@ -54,14 +54,14 @@ const Introduction = () => {
               <li>서울시 송파구</li>
               <li>성균관대 러시아어문학과 졸업</li>
               <li className="hover:underline underline-offset-2 break-all">
-                <a href="tel:01041188180" target="_blank" rel="noopener noreferrer">010-4118-8180</a>
+                <a href="tel:01041188180">010-4118-8180</a>
               </li>
               <li className="hover:underline underline-offset-2 break-all">
-                <a href="mailto:chltjdnjs529@gmail.com" target="_blank" rel="noopener noreferrer">chltjdnjs529@gmail.com</a>
+                <a href="mailto:chltjdnjs529@gmail.com">chltjdnjs529@gmail.com</a>
               </li>
             </ul>
           </div>
-          <hr className="w-full border-white/60"/>
+          <hr className="w-full border-white/70" aria-hidden="true"/>
           <div className="flex gap-x-4 sm:gap-x-6">
             <ul className="!leading-loose text-sm sm:text-base w-16 sm:w-20">
               <li>경력</li>

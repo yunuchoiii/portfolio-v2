@@ -13,24 +13,25 @@ const ExtraSubscription = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="mt-4 sm:mt-5 border-t border-white/20 pt-4 sm:pt-5">
+    <div className="mt-4 sm:mt-5 border-t border-white/30 pt-4 sm:pt-5">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between gap-x-4 text-left active:opacity-50 lg:hover:opacity-80 transition-opacity"
       >
-        <h6 className="text-sm sm:text-base font-semibold text-white/90">
+        <h3 className="text-sm sm:text-base font-semibold text-white">
           파트타임스터디 파산 사태와 관련하여
-        </h6>
+        </h3>
         <ChevronDown
           className={cn(
-            "size-5 sm:size-6 text-white/70 flex-shrink-0 transition-transform duration-300",
+            "size-5 sm:size-6 text-white/85 flex-shrink-0 transition-transform duration-300",
             isOpen && "rotate-180"
           )}
+          aria-hidden="true"
         />
       </button>
       <div
         className={cn(
-          "text-sm sm:text-base !leading-relaxed text-white/80 whitespace-pre-line overflow-hidden transition-all duration-300 ease-in-out flex flex-col gap-y-2",
+          "text-sm sm:text-base !leading-relaxed text-white/90 whitespace-pre-line overflow-hidden transition-all duration-300 ease-in-out flex flex-col gap-y-2",
           isOpen ? "mt-4 sm:mt-5 max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
         )}
       >

@@ -209,7 +209,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
           onClick={onClose}
           className="absolute top-4 right-4 md:top-6 md:right-6 active:opacity-50 transition-opacity"
         >
-          <XIcon className="md:size-8 size-6" />
+          <XIcon className="md:size-8 size-6" aria-hidden="true" />
         </button>
         <div className="flex flex-col gap-y-5 h-full overflow-y-auto scrollbar-hide">
           <div className="flex flex-col gap-y-3 flex-shrink-0">
@@ -218,8 +218,14 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
                 {displayProject.title}
               </h2>
               {displayProject.deployedLink && (
-                <a href={displayProject.deployedLink} target="_blank" rel="noopener noreferrer" className="size-8 rounded-full flex items-center justify-center transition-colors hover:bg-white/10">
-                  <LinkIcon className="size-5" />
+                <a 
+                  href={displayProject.deployedLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="size-8 rounded-full flex items-center justify-center transition-colors hover:bg-white/10"
+                  aria-label={`${displayProject.title} 프로젝트 배포 사이트 열기`}
+                >
+                  <LinkIcon className="size-5" aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -324,7 +330,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
             className="absolute top-6 right-6 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="닫기"
           >
-            <XIcon className="size-8" />
+            <XIcon className="size-8" aria-hidden="true" />
           </button>
 
           <button
@@ -335,7 +341,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
             className="h-fit absolute left-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="이전 이미지"
           >
-            <ChevronLeft className="size-10" />
+            <ChevronLeft className="size-10" aria-hidden="true" />
           </button>
 
           <button
@@ -346,7 +352,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
             className="h-fit absolute right-0 p-4 sm:p-6 bottom-0 sm:top-1/2 sm:-translate-y-1/2 text-white hover:opacity-70 transition-opacity z-10"
             aria-label="다음 이미지"
           >
-            <ChevronRight className="size-10" />
+            <ChevronRight className="size-10" aria-hidden="true" />
           </button>
 
           <div
@@ -360,7 +366,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
             />
           </div>
 
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-base font-medium bg-black/50 px-3 py-1 rounded">
             {lightboxIndex + 1} / {imageList.length}
           </div>
         </div>

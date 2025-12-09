@@ -29,6 +29,8 @@ const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
             ptsBannerRef.isVisible && "visible"
           )}
           style={{ backgroundImage: `url("/images/projects/PTS/banner.png")` }}
+          role="img"
+          aria-label="PTS 프로젝트 배너 이미지"
         />
         <div className="flex flex-col gap-y-3 sm:gap-y-5 flex-1 min-w-0">
           {PTS_PROJECTS.map((project, index) => (
@@ -49,6 +51,8 @@ const CompanyProjects = ({ onProjectClick }: CompanyProjectsProps) => {
             mfpBannerRef.isVisible && "visible"
           )}
           style={{ backgroundImage: `url("/images/projects/MFP/banner.png")` }}
+          role="img"
+          aria-label="MFP 프로젝트 배너 이미지"
         />
         <div className="flex flex-col gap-y-3 sm:gap-y-5 flex-1 min-w-0">
           {MFP_PROJECTS.map((project, index) => (

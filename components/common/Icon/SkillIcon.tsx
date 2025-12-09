@@ -9,7 +9,6 @@ const SkillIcon = ({ icon: Icon, name, pointColor, active }: SkillIconProps) => 
   return <div className="flex flex-col items-center gap-y-2 w-[60px]">
     <div 
       title={name}
-      aria-label={name} 
       className={cn(
         "group relative size-[60px] rounded-full flex items-center justify-center flex-col gap-y-2 overflow-hidden transition-all duration-300 ease-in-out",
         !active && "blur-xl"

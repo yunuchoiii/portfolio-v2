@@ -154,7 +154,7 @@ const Header = () => {
     <header className="fixed top-6 left-[50px] right-[50px] z-50 w-[calc(100%-100px)] h-[var(--navigation-height)] hidden md:flex items-center justify-between">
       <Image
         src="/logos/logo_with_name.png"
-        alt="logo"
+        alt="최서원 포트폴리오 로고"
         width={71}
         height={56}
         className="w-auto h-12 object-contain"
@@ -174,12 +174,12 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
+      <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer" aria-label="GitHub 프로필 열기">
         <div className="group w-14 h-14 p-2 hover:bg-white/5 rounded-full flex items-center justify-center border border-transparent hover:border-white/10 backdrop-blur transition-all duration-300 ease-in-out hover:w-[165px] hover:justify-between hover:gap-x-4">
-          <GitHubIcon className="flex-shrink-0 size-10" />
+          <GitHubIcon className="flex-shrink-0 size-10" aria-hidden="true" />
           <div className="flex items-center gap-x-2 group-hover:opacity-100 group-hover:w-[85px] opacity-0 w-0 overflow-hidden transition-all duration-300 ease-in-out">
             <span className="font-medium whitespace-nowrap">GitHub</span>
-            <ArrowRight className="size-6 flex-shrink-0" />
+            <ArrowRight className="size-6 flex-shrink-0" aria-hidden="true" />
           </div>
         </div>
       </a>
@@ -189,7 +189,7 @@ const Header = () => {
     <header className="fixed top-4 left-5 right-5 z-50 w-[calc(100%-48px)] h-[var(--navigation-height)] flex items-center justify-between md:hidden">
       <Image
         src="/logos/logo_with_name.png"
-        alt="logo"
+        alt="최서원 포트폴리오 로고"
         width={71}
         height={56}
         className="w-auto h-8 object-contain"
@@ -221,8 +221,8 @@ const Header = () => {
                     <Icon className={`size-5 flex-shrink-0 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 ${
                       isActive 
                         ? "left-2.5 text-white" 
-                        : "left-1/2 -translate-x-1/2 text-white/60 group-active:text-white/80 group-active:scale-90"
-                    }`} />
+                        : "left-1/2 -translate-x-1/2 text-white/75 group-active:text-white/90 group-active:scale-90"
+                    }`} aria-hidden="true" />
                     <span className={`text-sm font-medium whitespace-nowrap transition-all duration-300 ease-in-out absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full pl-2 text-center ${
                       isActive 
                         ? "opacity-100 max-w-[80px] ml-2" 
