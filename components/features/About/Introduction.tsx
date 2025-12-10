@@ -65,7 +65,7 @@ const Introduction = () => {
           <div className="flex gap-x-4 sm:gap-x-6">
             <ul className="!leading-loose text-sm sm:text-base w-16 sm:w-20">
               <li>경력</li>
-              <li>신입</li>
+              <li>구직 형태</li>
               <li>이력서</li>
             </ul>
             <ul className="!leading-loose text-sm sm:text-base text-green-10 whitespace-nowrap">
