@@ -15,8 +15,8 @@ export const CAREER_LIST: Career[] = [
     isCurrent: false,
     descriptions: [
       "모바일 WebView 기반 학습 플랫폼 프론트엔드 개발 및 UX 개선",
-      "Next.js 기반 B2C-B2B WebApp 구조 설계 및 UI 컴포넌트 개발",
-      "TanStack Query Recoil 기반 상태 관리 체계 구축 및 서버 상태 최적화",
+      "Next.js 기반 B2C · B2B WebApp 구조 설계 및 UI 컴포넌트 개발",
+      "TanStack Query, Recoil 기반 상태 관리 체계 구축 및 서버 상태 최적화",
       "스터디 그룹, 게이미피케이션, 커머스 등 핵심 B2C 기능 개발",
       "PortOne 결제 연동 및 iOS/Android WebView 네이티브 브릿지 통신 구현",
       "Lottie 애니메이션, 이미지 프리로딩, Skeleton UI 등을 적용하여 모바일 UX 향상",
