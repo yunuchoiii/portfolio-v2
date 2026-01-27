@@ -1,10 +1,20 @@
 import Header from "@/components/features/Layout/Header";
 import { defaultMetadata, jsonLdPerson, jsonLdWebsite } from "@/lib/seo";
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = defaultMetadata;
+
+// Poppins 폰트 최적화 - 자동으로 preload 및 최적화됨
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  variable: "--font-poppins",
+});
 
 export default function RootLayout({
   children,
@@ -12,23 +22,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={poppins.variable}>
       <head>
-        {/* 폰트 및 이미지 preload */}
+        {/* Pretendard 폰트 CSS - preload와 stylesheet를 함께 사용하여 빠른 로딩 */}
         <link
           rel="preload"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
           as="style"
         />
         <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          as="style"
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
+        {/* 배경 이미지 preload - 높은 우선순위 */}
         <link
           rel="preload"
           href="/images/background_lines.png"
           as="image"
+          fetchPriority="high"
         />
       </head>
       <body>
