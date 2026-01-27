@@ -33,7 +33,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
       },
       keyframes: {
         "flip-in-hor-top": {
