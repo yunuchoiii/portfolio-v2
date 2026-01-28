@@ -195,6 +195,7 @@ export const PERSONAL_PROJECT_LIST: Project[] = [
     },
     notionLink: "https://www.notion.so/yunuchoiii/2efc22b00eb68042bdb9ea2d1977b2a9?source=copy_link",
     notionId: "2efc22b00eb68042bdb9ea2d1977b2a9",
+    deployedLink: "https://app.routineisland.com/download"
   },
   {
     title: "포트폴리오",
