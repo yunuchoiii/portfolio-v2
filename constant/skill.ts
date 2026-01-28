@@ -24,138 +24,144 @@ import VuexIcon from "@/assets/icons/vuex.svg";
 import { Skill, SkillData, SkillEnum, SkillLevel, Tool } from "@/types/skill";
 
 export const SKILL_LIST: Partial<Record<SkillEnum, Skill>> = {
-  [SkillEnum.React]: { 
-    name: "React", 
-    icon: ReactIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#61DAFB" 
+  [SkillEnum.React]: {
+    name: "React",
+    icon: ReactIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#61DAFB"
   },
-  [SkillEnum.NextJs]: { 
-    name: "Next.js", 
-    icon: NextJsIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#FFFFFF" 
+  [SkillEnum.NextJs]: {
+    name: "Next.js",
+    icon: NextJsIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#FFFFFF"
   },
-  [SkillEnum.Vue]: { 
-    name: "Vue", 
-    icon: VueIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#41B883" 
+  [SkillEnum.ReactNative]: {
+    name: "React Native",
+    icon: ReactIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#000000"
   },
-  [SkillEnum.TypeScript]: { 
-    name: "TypeScript", 
-    icon: TypeScriptIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#007ACC" 
+  [SkillEnum.Vue]: {
+    name: "Vue",
+    icon: VueIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#41B883"
   },
-  [SkillEnum.JavaScript]: { 
-    name: "JavaScript", 
-    icon: JavaScriptIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#F0DB4F" 
+  [SkillEnum.TypeScript]: {
+    name: "TypeScript",
+    icon: TypeScriptIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#007ACC"
   },
-  [SkillEnum.HTML]: { 
-    name: "HTML", 
-    icon: HTMLIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#E34F26" 
+  [SkillEnum.JavaScript]: {
+    name: "JavaScript",
+    icon: JavaScriptIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#F0DB4F"
   },
-  [SkillEnum.CSS]: { 
-    name: "CSS", 
-    icon: CSSIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#1B73BA" 
+  [SkillEnum.HTML]: {
+    name: "HTML",
+    icon: HTMLIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#E34F26"
   },
-  [SkillEnum.NodeJs]: { 
-    name: "Node.js", 
-    icon: NodeJsIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#8CC84B" 
+  [SkillEnum.CSS]: {
+    name: "CSS",
+    icon: CSSIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#1B73BA"
   },
-  [SkillEnum.MySQL]: { 
-    name: "MySQL", 
-    icon: MySQLIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#00546B" 
+  [SkillEnum.NodeJs]: {
+    name: "Node.js",
+    icon: NodeJsIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#8CC84B"
   },
-  [SkillEnum.ReactQuery]: { 
-    name: "ReactQuery", 
-    icon: ReactQueryIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#6EDBFD" 
+  [SkillEnum.MySQL]: {
+    name: "MySQL",
+    icon: MySQLIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#00546B"
   },
-  [SkillEnum.Recoil]: { 
-    name: "Recoil", 
-    icon: RecoilIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#3578E5" 
+  [SkillEnum.ReactQuery]: {
+    name: "ReactQuery",
+    icon: ReactQueryIcon,
+    level: SkillLevel.Skilled,
+    pointColor: "#6EDBFD"
   },
-  [SkillEnum.Vuex]: { 
-    name: "Vuex", 
-    icon: VuexIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#4FC08D" 
+  [SkillEnum.Recoil]: {
+    name: "Recoil",
+    icon: RecoilIcon,
+    level: SkillLevel.Skilled,
+    pointColor: "#3578E5"
   },
-  [SkillEnum.Tailwind]: { 
-    name: "Tailwind", 
-    icon: TailwindIcon, 
-    level: SkillLevel.Expert, 
-    pointColor: "#38BDF8" 
+  [SkillEnum.Vuex]: {
+    name: "Vuex",
+    icon: VuexIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#4FC08D"
   },
-  [SkillEnum.ShadcnUI]: { 
-    name: "ShadcnUI", 
-    icon: ShadcnUIIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#FFFFFF" 
+  [SkillEnum.Tailwind]: {
+    name: "Tailwind",
+    icon: TailwindIcon,
+    level: SkillLevel.Expert,
+    pointColor: "#38BDF8"
   },
-  [SkillEnum.MUI]: { 
-    name: "MUI", 
-    icon: MUIIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#0073E6" 
+  [SkillEnum.ShadcnUI]: {
+    name: "ShadcnUI",
+    icon: ShadcnUIIcon,
+    level: SkillLevel.Skilled,
+    pointColor: "#FFFFFF"
   },
-  [SkillEnum.Bootstrap]: { 
-    name: "Bootstrap", 
-    icon: BootstrapIcon, 
-    level: SkillLevel.Skilled, 
-    pointColor: "#7E13F8" 
+  [SkillEnum.MUI]: {
+    name: "MUI",
+    icon: MUIIcon,
+    level: SkillLevel.Skilled,
+    pointColor: "#0073E6"
   },
-  [SkillEnum.Vuetify]: { 
-    name: "Vuetify", 
-    icon: VuetifyIcon, 
-    level: SkillLevel.Basic, 
-    pointColor: "#1697F6" 
+  [SkillEnum.Bootstrap]: {
+    name: "Bootstrap",
+    icon: BootstrapIcon,
+    level: SkillLevel.Skilled,
+    pointColor: "#7E13F8"
+  },
+  [SkillEnum.Vuetify]: {
+    name: "Vuetify",
+    icon: VuetifyIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#1697F6"
   },
 };
 
 export const TOOL_LIST: Partial<Record<SkillEnum, Tool>> = {
-  [SkillEnum.Github]: { 
-    name: "Github", 
+  [SkillEnum.Github]: {
+    name: "Github",
     icon: GithubIcon,
     pointColor: "#FFFFFF"
   },
-  [SkillEnum.AWS]: { 
-    name: "AWS", 
+  [SkillEnum.AWS]: {
+    name: "AWS",
     icon: AWSIcon,
     pointColor: "#FF9900"
   },
-  [SkillEnum.Firebase]: { 
-    name: "Firebase", 
+  [SkillEnum.Firebase]: {
+    name: "Firebase",
     icon: FirebaseIcon,
     pointColor: "#FF9100"
   },
-  [SkillEnum.Vercel]: { 
-    name: "Vercel", 
+  [SkillEnum.Vercel]: {
+    name: "Vercel",
     icon: VercelIcon,
     pointColor: "#FFFFFF"
   },
-  [SkillEnum.Figma]: { 
-    name: "Figma", 
+  [SkillEnum.Figma]: {
+    name: "Figma",
     icon: FigmaIcon,
     pointColor: "#FFFFFF"
   },
-  [SkillEnum.Storybook]: { 
-    name: "Storybook", 
+  [SkillEnum.Storybook]: {
+    name: "Storybook",
     icon: StorybookIcon,
     pointColor: "#FF4785"
   },

@@ -178,6 +178,7 @@ export const PERSONAL_PROJECT_LIST: Project[] = [
     ],
     skills: [
       SkillEnum.React,
+      SkillEnum.ReactNative,
       SkillEnum.NextJs,
       SkillEnum.TypeScript,
       SkillEnum.Tailwind,
