@@ -191,7 +191,7 @@ export const PERSONAL_PROJECT_LIST: Project[] = [
     ],
     period: {
       start: "2025.12",
-      end: "2026.01 (출시 준비중)",
+      end: "2026.01",
     },
     notionLink: "https://www.notion.so/yunuchoiii/2efc22b00eb68042bdb9ea2d1977b2a9?source=copy_link",
     notionId: "2efc22b00eb68042bdb9ea2d1977b2a9",
