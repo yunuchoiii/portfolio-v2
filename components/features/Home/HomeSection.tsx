@@ -22,12 +22,12 @@ const HomeSection = () => {
   }, []);
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="h-screen w-full bg-gradient-to-b from-[#393939] to-[#1D1E1E] relative overflow-hidden"
     >
       <Image
-        src="/images/background_lines.png"
+        src="/images/background_lines.svg"
         alt=""
         aria-hidden="true"
         width={1000}
@@ -141,10 +141,10 @@ const HomeSection = () => {
             )}
             style={{ transitionDelay: "1.7s" }}
           >
-            <Link 
-              href="#about" 
-              replace 
-              onClick={(e) => moveToSection(e, "#about", () => {})}
+            <Link
+              href="#about"
+              replace
+              onClick={(e) => moveToSection(e, "#about", () => { })}
               className="group w-[120px] sm:w-[130px] md:w-[140px] h-10 sm:h-11 md:h-12 lg:h-14 rounded-full bg-gradient-to-br from-green-20 to-blue-40 flex items-center justify-center p-0.5 shadow-[4px_4px_8px_rgba(0,0,0,0.15)] hover:shadow-[0px_0px_24px_rgba(30,214,184,0.5)] hover:scale-105 active:scale-95 transition-all md:duration-300 ease-in-out"
               aria-label="더 알아보기 - About 섹션으로 이동"
             >
