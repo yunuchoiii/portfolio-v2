@@ -9,7 +9,7 @@ import { SkillEnum } from "@/types/skill";
 import { ChevronLeft, ChevronRight, LinkIcon, XIcon } from "lucide-react";
 import { ExtendedRecordMap } from "notion-types";
 import "prismjs/themes/prism-tomorrow.css";
-import { useEffect, useState } from "react";
+import { Component, ErrorInfo, ReactNode, useEffect, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import "react-notion-x/src/styles.css";
 import Gallery from "react-photo-gallery";
@@ -17,6 +17,45 @@ import Gallery from "react-photo-gallery";
 interface ProjectDetailModalProps {
   project: Project | null;
   onClose: () => void;
+}
+
+interface NotionErrorBoundaryProps {
+  children: ReactNode;
+  fallback: ReactNode;
+}
+
+interface NotionErrorBoundaryState {
+  hasError: boolean;
+}
+
+class NotionErrorBoundary extends Component<
+  NotionErrorBoundaryProps,
+  NotionErrorBoundaryState
+> {
+  state: NotionErrorBoundaryState = {
+    hasError: false,
+  };
+
+  static getDerivedStateFromError(): NotionErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("NotionRenderer crashed:", error, errorInfo);
+  }
+
+  componentDidUpdate(prevProps: NotionErrorBoundaryProps) {
+    if (prevProps.children !== this.props.children && this.state.hasError) {
+      this.setState({ hasError: false });
+    }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
 }
 
 const GallerySkeleton = () => {
@@ -67,6 +106,43 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  const normalizeRecordMapForRenderer = (data: unknown): ExtendedRecordMap | null => {
+    if (typeof data !== "object" || data === null) return null;
+
+    const recordMap = data as {
+      block?: Record<string, { value?: { id?: string; value?: { id?: string } } }>;
+    };
+
+    if (!recordMap.block || typeof recordMap.block !== "object") return null;
+
+    const normalizedBlock: Record<string, { role: string; value: { id: string } & Record<string, unknown> }> = {};
+
+    for (const [key, blockEntry] of Object.entries(recordMap.block)) {
+      const directValue = blockEntry?.value;
+      const nestedValue = directValue?.value;
+      const resolvedValue =
+        typeof directValue?.id === "string"
+          ? directValue
+          : typeof nestedValue?.id === "string"
+            ? nestedValue
+            : null;
+
+      if (resolvedValue?.id) {
+        normalizedBlock[key] = {
+          role: "reader",
+          value: resolvedValue as { id: string } & Record<string, unknown>,
+        };
+      }
+    }
+
+    if (Object.keys(normalizedBlock).length === 0) return null;
+
+    return {
+      ...(recordMap as ExtendedRecordMap),
+      block: normalizedBlock as unknown as ExtendedRecordMap["block"],
+    };
+  };
+
   // 노션 페이지 데이터 가져오기
   useEffect(() => {
     if (displayProject?.notionLink) {
@@ -75,20 +151,34 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
         setIsLoading(true);
         const formattedPageId = formatNotionPageId(pageId);
         fetch(`/api/notion/${formattedPageId}`)
-          .then((res) => res.json())
+          .then(async (res) => {
+            const data = await res.json();
+            if (!res.ok) {
+              throw new Error(data?.error || "Failed to fetch Notion page");
+            }
+            const normalizedRecordMap = normalizeRecordMapForRenderer(data);
+            if (!normalizedRecordMap) {
+              throw new Error("Invalid Notion record map");
+            }
+            return normalizedRecordMap;
+          })
           .then((data) => {
             setRecordMap(data);
             setIsLoading(false);
           })
           .catch((error) => {
             console.error("Failed to load Notion page:", error);
+            setRecordMap(null);
             setIsLoading(false);
           });
+      } else {
+        setRecordMap(null);
+        setIsLoading(false);
       }
     } else {
       setRecordMap(null);
     }
-  }, [displayProject?.notionLink]);
+  }, [displayProject?.notionLink, displayProject?.notionId]);
 
   // 모달 열리면 배경 스크롤 방지
   useEffect(() => {
@@ -298,11 +388,19 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
               {isLoading ? (
                 <NotionSkeleton />
               ) : recordMap ? (
-                <NotionRenderer
-                  recordMap={recordMap}
-                  fullPage={false}
-                  darkMode={true}
-                />
+                <NotionErrorBoundary
+                  fallback={
+                    <div className="flex items-center justify-center h-full">
+                      <p>노션 페이지를 불러올 수 없습니다.</p>
+                    </div>
+                  }
+                >
+                  <NotionRenderer
+                    recordMap={recordMap}
+                    fullPage={false}
+                    darkMode={true}
+                  />
+                </NotionErrorBoundary>
               ) : (
                 <div className="flex items-center justify-center h-full">
                   <p>노션 페이지를 불러올 수 없습니다.</p>
