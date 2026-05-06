@@ -31,6 +31,8 @@ export enum SkillEnum {
   Vercel = "Vercel",
   Figma = "Figma",
   Storybook = "Storybook",
+  Cursor = "Cursor",
+  Claude = "Claude",
 }
 
 export interface Skill {
