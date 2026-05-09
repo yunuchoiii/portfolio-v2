@@ -8,4 +8,4 @@ export const EMAIL_LINK = "mailto:chltjdnjs529@gmail.com";
 
 export const KAKAO_LINK = "https://open.kakao.com/o/sYldU2qg";
 
-export const RESUME_LINK = "https://drive.google.com/file/d/109g_bTRKH0YqrzqcPuThNKAI77Jyo6Bu/view?usp=sharing";
+export const RESUME_LINK = "https://my.surfit.io/w/1787096965";
