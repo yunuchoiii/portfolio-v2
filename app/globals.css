@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+/* Pretendard는 app/layout.tsx의 preload + stylesheet로 로드된다 */
 /* Poppins는 next/font/google을 통해 자동으로 최적화되어 로드됨 */
 
 @tailwind base;

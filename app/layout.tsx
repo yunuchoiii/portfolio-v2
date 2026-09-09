@@ -34,13 +34,6 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
-        {/* 배경 이미지 preload - 높은 우선순위 */}
-        <link
-          rel="preload"
-          href="/images/background_lines.png"
-          as="image"
-          fetchPriority="high"
-        />
       </head>
       <body>
         <Script id="website-json-ld" type="application/ld+json" strategy="beforeInteractive">

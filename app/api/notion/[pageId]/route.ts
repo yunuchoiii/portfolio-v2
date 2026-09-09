@@ -1,46 +1,11 @@
-import { NotionAPI } from 'notion-client';
+import { normalizeNotionRecordMap } from '@/lib/notion';
 import { NextRequest, NextResponse } from 'next/server';
+import { NotionAPI } from 'notion-client';
 
 const notion = new NotionAPI();
 
-type BlockValue = {
-  id?: string;
-};
-
-type BlockEntry = {
-  role?: string;
-  value?: BlockValue | { value?: BlockValue };
-  spaceId?: string;
-};
-
-const normalizeRecordMap = <T extends { block?: unknown }>(recordMap: T): T => {
-  const block = recordMap.block as Record<string, BlockEntry> | undefined;
-  if (!block || typeof block !== 'object') {
-    return recordMap;
-  }
-
-  const normalizedBlock: Record<string, { value: BlockValue; role?: string; spaceId?: string }> = {};
-
-  for (const [key, entry] of Object.entries(block)) {
-    const directValue = entry?.value as BlockValue | undefined;
-    const nestedValue = (entry?.value as { value?: BlockValue } | undefined)?.value;
-    const resolvedValue = directValue?.id ? directValue : nestedValue;
-
-    // react-notion-x가 처리 가능한 블록(value.id 존재)만 전달
-    if (resolvedValue?.id) {
-      normalizedBlock[key] = {
-        value: resolvedValue,
-        role: entry?.role,
-        spaceId: entry?.spaceId,
-      };
-    }
-  }
-
-  return {
-    ...recordMap,
-    block: normalizedBlock,
-  } as T;
-};
+// 노션 페이지는 자주 바뀌지 않으므로 CDN에 캐싱해 모달을 열 때마다 원본을 긁지 않게 한다
+const CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400';
 
 export async function GET(
   request: NextRequest,
@@ -48,7 +13,7 @@ export async function GET(
 ) {
   try {
     const { pageId } = params;
-    
+
     if (!pageId) {
       return NextResponse.json(
         { error: 'Page ID is required' },
@@ -58,11 +23,20 @@ export async function GET(
 
     // 페이지 ID 형식 변환 (하이픈 제거)
     const formattedPageId = pageId.replace(/-/g, '');
-    
-    const recordMap = await notion.getPage(formattedPageId);
-    const normalizedRecordMap = normalizeRecordMap(recordMap);
 
-    return NextResponse.json(normalizedRecordMap);
+    const recordMap = await notion.getPage(formattedPageId);
+    const normalizedRecordMap = normalizeNotionRecordMap(recordMap);
+
+    if (!normalizedRecordMap) {
+      return NextResponse.json(
+        { error: 'Invalid Notion record map' },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json(normalizedRecordMap, {
+      headers: { 'Cache-Control': CACHE_CONTROL },
+    });
   } catch (error) {
     console.error('Failed to fetch Notion page:', error);
     return NextResponse.json(
@@ -71,4 +45,3 @@ export async function GET(
     );
   }
 }
-

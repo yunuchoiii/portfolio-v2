@@ -3,13 +3,13 @@
 import Skeleton from "@/components/common/Loader/Skeleton";
 import SkillTag from "@/components/common/Tag/SkillTag";
 import { getSkillByEnum } from "@/constant/skill";
-import { formatNotionPageId } from "@/lib/notion";
+import { formatNotionPageId, normalizeNotionRecordMap } from "@/lib/notion";
 import { Project } from "@/types/project";
 import { SkillEnum } from "@/types/skill";
 import { ChevronLeft, ChevronRight, LinkIcon, XIcon } from "lucide-react";
 import { ExtendedRecordMap } from "notion-types";
 import "prismjs/themes/prism-tomorrow.css";
-import { Component, ErrorInfo, ReactNode, useEffect, useState } from "react";
+import { Component, ErrorInfo, ReactNode, useEffect, useMemo, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import "react-notion-x/src/styles.css";
 import Gallery from "react-photo-gallery";
@@ -106,43 +106,6 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const normalizeRecordMapForRenderer = (data: unknown): ExtendedRecordMap | null => {
-    if (typeof data !== "object" || data === null) return null;
-
-    const recordMap = data as {
-      block?: Record<string, { value?: { id?: string; value?: { id?: string } } }>;
-    };
-
-    if (!recordMap.block || typeof recordMap.block !== "object") return null;
-
-    const normalizedBlock: Record<string, { role: string; value: { id: string } & Record<string, unknown> }> = {};
-
-    for (const [key, blockEntry] of Object.entries(recordMap.block)) {
-      const directValue = blockEntry?.value;
-      const nestedValue = directValue?.value;
-      const resolvedValue =
-        typeof directValue?.id === "string"
-          ? directValue
-          : typeof nestedValue?.id === "string"
-            ? nestedValue
-            : null;
-
-      if (resolvedValue?.id) {
-        normalizedBlock[key] = {
-          role: "reader",
-          value: resolvedValue as { id: string } & Record<string, unknown>,
-        };
-      }
-    }
-
-    if (Object.keys(normalizedBlock).length === 0) return null;
-
-    return {
-      ...(recordMap as ExtendedRecordMap),
-      block: normalizedBlock as unknown as ExtendedRecordMap["block"],
-    };
-  };
-
   // 노션 페이지 데이터 가져오기
   useEffect(() => {
     if (displayProject?.notionLink) {
@@ -156,7 +119,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
             if (!res.ok) {
               throw new Error(data?.error || "Failed to fetch Notion page");
             }
-            const normalizedRecordMap = normalizeRecordMapForRenderer(data);
+            const normalizedRecordMap = normalizeNotionRecordMap(data);
             if (!normalizedRecordMap) {
               throw new Error("Invalid Notion record map");
             }
@@ -201,7 +164,7 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
     }
   }, [project, shouldRender, displayProject]);
 
-  const imageList = displayProject?.imageList || [];
+  const imageList = useMemo(() => displayProject?.imageList ?? [], [displayProject?.imageList]);
   const hasImages = imageList.length > 0;
   const [imageDimensions, setImageDimensions] = useState<Array<{ width: number; height: number }>>([]);
 
