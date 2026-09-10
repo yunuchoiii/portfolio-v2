@@ -28,7 +28,9 @@ const CompanyBanner = ({ banner, className }: CompanyBannerProps) => {
       }}
     >
       {/* 상단 — 로고 왼쪽, 회사명·부제를 오른쪽에 두 줄로 */}
-      <div className="relative z-10 flex items-center gap-x-2 sm:gap-x-2.5 md:gap-x-3">
+      {/* 배너 폭이 모바일에선 120px 남짓이라 로고+텍스트 가로 배치가 들어가지 않는다.
+          base 에서만 세로로 쌓고, sm 부터 시안대로 가로로 붙인다. */}
+      <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-y-1.5 gap-x-2 sm:gap-x-2.5 md:gap-x-3">
         <Image
           src={banner.logo.src}
           width={banner.logo.width}
@@ -54,8 +56,10 @@ const CompanyBanner = ({ banner, className }: CompanyBannerProps) => {
 
       {/* 하단 — 세로로 크게 깔리는 영문명 */}
       <div
+        // absolute 로 깔면 배너가 짧을 때(카드 2장짜리 그룹, 모바일) 헤더와 겹친다.
+        // 정상 흐름에 두고 남은 공간을 차지시키면 겹칠 수 없고, 넘치면 잘린다.
         className={cn(
-          "absolute inset-x-0 bottom-0 flex items-end px-2 sm:px-3 md:px-4 pb-4 sm:pb-5 md:pb-6",
+          "flex-1 min-h-0 flex items-end overflow-hidden pt-2 pb-1 sm:pb-2 md:pb-3",
           isUp ? "justify-start" : "justify-end"
         )}
         aria-hidden="true"
@@ -65,7 +69,7 @@ const CompanyBanner = ({ banner, className }: CompanyBannerProps) => {
             // 시안값: Montserrat ExtraBold 72px / 자간 -1%.
             // 72px 은 배너 폭이 시안과 같아지는 lg(배너 322px) 기준이고, 그 아래는 폭에 맞춰 줄인다.
             "font-montserrat font-extrabold leading-none tracking-[-0.01em] whitespace-pre",
-            "text-[34px] sm:text-[46px] md:text-[56px] lg:text-[72px]"
+            "text-[26px] sm:text-[40px] md:text-[54px] lg:text-[72px]"
           )}
           style={{
             color: banner.engColor,
