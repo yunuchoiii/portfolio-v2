@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+/* Pretendard는 app/layout.tsx의 preload + stylesheet로 로드된다 */
 /* Poppins는 next/font/google을 통해 자동으로 최적화되어 로드됨 */
 
 @tailwind base;
@@ -37,24 +37,98 @@ body {
   }
 }
 
-.notion-container {
-  main {
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-  }
+/* 프로젝트 상세 본문 — public/content/projects/*.md 를 react-markdown 이 렌더한다.
+   Tailwind preflight가 목록·제목 스타일을 지워버리므로 여기서 직접 세운다. */
+.project-content {
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.85);
+}
 
-  .notion-list li {
-    padding: 4px 0px;
-  }
+.project-content h2 {
+  width: fit-content;
+  margin: 2rem 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #2CF599, #0AAEEA);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  .notion-h {
-    margin-bottom: 6px;
-  }
+.project-content h2:first-child {
+  margin-top: 0;
+}
 
-  .notion-inline-code {
-    color: #2CF599;
-  }
+.project-content h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #C2FED8;
+}
+
+.project-content p {
+  margin: 0.75rem 0;
+}
+
+.project-content ul,
+.project-content ol {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+}
+
+.project-content ul { list-style: disc; }
+.project-content ol { list-style: decimal; }
+
+.project-content li {
+  padding: 0.25rem 0;
+}
+
+.project-content li::marker {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.project-content strong {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.project-content a {
+  color: #65C7FF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.project-content code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #2CF599;
+  font-size: 0.9em;
+}
+
+.project-content pre {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  overflow-x: auto;
+}
+
+.project-content pre code {
+  padding: 0;
+  background: none;
+  color: inherit;
+}
+
+.project-content blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(44, 245, 153, 0.5);
+}
+
+.project-content hr {
+  margin: 1.5rem 0;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* 스크롤바 숨기기 */

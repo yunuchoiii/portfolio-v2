@@ -13,7 +13,7 @@
 | Framework | Next.js 14 (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS |
-| Content | Notion (react-notion-x) |
+| Content | 마크다운 (`public/content/projects/*.md`) |
 | Deploy | Vercel |
 
 ---
@@ -23,7 +23,7 @@
 - **Home** — 인트로 및 간단한 소개
 - **About** — 경력, 학력, 수상 이력
 - **Skills** — 기술 스택 및 소프트 스킬
-- **Projects** — 회사 프로젝트 및 개인 프로젝트 (Notion 연동)
+- **Projects** — 회사 프로젝트 및 개인 프로젝트
 - **Contact** — 연락처 및 링크
 
 ---
@@ -36,6 +36,22 @@ yarn dev
 ```
 
 [http://localhost:3000](http://localhost:3000) 에서 확인할 수 있습니다.
+
+---
+
+## 프로젝트 상세 내용
+
+각 프로젝트의 상세 본문은 `public/content/projects/<contentSlug>.md` 에 마크다운으로
+들어 있습니다. 런타임에 노션을 호출하지 않으므로 외부 상황에 영향을 받지 않습니다.
+
+내용은 노션에서 작성하고, 바뀌면 아래를 돌려 마크다운을 다시 받아 커밋합니다.
+
+```bash
+yarn sync:content
+```
+
+대상은 `constant/project.ts` 의 `contentSlug` + `notionId` 쌍에서 읽습니다.
+노션 페이지가 **웹에 공개**되어 있어야 받아집니다.
 
 ---
 

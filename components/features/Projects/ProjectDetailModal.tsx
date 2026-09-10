@@ -3,59 +3,18 @@
 import Skeleton from "@/components/common/Loader/Skeleton";
 import SkillTag from "@/components/common/Tag/SkillTag";
 import { getSkillByEnum } from "@/constant/skill";
-import { formatNotionPageId } from "@/lib/notion";
 import { Project } from "@/types/project";
 import { SkillEnum } from "@/types/skill";
 import { ChevronLeft, ChevronRight, LinkIcon, XIcon } from "lucide-react";
-import { ExtendedRecordMap } from "notion-types";
-import "prismjs/themes/prism-tomorrow.css";
-import { Component, ErrorInfo, ReactNode, useEffect, useState } from "react";
-import { NotionRenderer } from "react-notion-x";
-import "react-notion-x/src/styles.css";
+import { useEffect, useMemo, useState } from "react";
+import Markdown from "react-markdown";
 import Gallery from "react-photo-gallery";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 
 interface ProjectDetailModalProps {
   project: Project | null;
   onClose: () => void;
-}
-
-interface NotionErrorBoundaryProps {
-  children: ReactNode;
-  fallback: ReactNode;
-}
-
-interface NotionErrorBoundaryState {
-  hasError: boolean;
-}
-
-class NotionErrorBoundary extends Component<
-  NotionErrorBoundaryProps,
-  NotionErrorBoundaryState
-> {
-  state: NotionErrorBoundaryState = {
-    hasError: false,
-  };
-
-  static getDerivedStateFromError(): NotionErrorBoundaryState {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("NotionRenderer crashed:", error, errorInfo);
-  }
-
-  componentDidUpdate(prevProps: NotionErrorBoundaryProps) {
-    if (prevProps.children !== this.props.children && this.state.hasError) {
-      this.setState({ hasError: false });
-    }
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback;
-    }
-    return this.props.children;
-  }
 }
 
 const GallerySkeleton = () => {
@@ -76,7 +35,7 @@ const GallerySkeleton = () => {
   );
 };
 
-const NotionSkeleton = () => {
+const ContentSkeleton = () => {
   return (
     <div className="flex flex-col gap-y-3">
       <Skeleton width={200} height={20}/>
@@ -101,84 +60,44 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
   const [displayProject, setDisplayProject] = useState<Project | null>(null);
-  const [recordMap, setRecordMap] = useState<ExtendedRecordMap | null>(null);
+  const [content, setContent] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const normalizeRecordMapForRenderer = (data: unknown): ExtendedRecordMap | null => {
-    if (typeof data !== "object" || data === null) return null;
-
-    const recordMap = data as {
-      block?: Record<string, { value?: { id?: string; value?: { id?: string } } }>;
-    };
-
-    if (!recordMap.block || typeof recordMap.block !== "object") return null;
-
-    const normalizedBlock: Record<string, { role: string; value: { id: string } & Record<string, unknown> }> = {};
-
-    for (const [key, blockEntry] of Object.entries(recordMap.block)) {
-      const directValue = blockEntry?.value;
-      const nestedValue = directValue?.value;
-      const resolvedValue =
-        typeof directValue?.id === "string"
-          ? directValue
-          : typeof nestedValue?.id === "string"
-            ? nestedValue
-            : null;
-
-      if (resolvedValue?.id) {
-        normalizedBlock[key] = {
-          role: "reader",
-          value: resolvedValue as { id: string } & Record<string, unknown>,
-        };
-      }
-    }
-
-    if (Object.keys(normalizedBlock).length === 0) return null;
-
-    return {
-      ...(recordMap as ExtendedRecordMap),
-      block: normalizedBlock as unknown as ExtendedRecordMap["block"],
-    };
-  };
-
-  // 노션 페이지 데이터 가져오기
+  // 상세 본문 마크다운 가져오기 (public/content/projects/*.md, 정적 파일이라 실패할 여지가 적다)
   useEffect(() => {
-    if (displayProject?.notionLink) {
-      const pageId = displayProject.notionId;
-      if (pageId) {
-        setIsLoading(true);
-        const formattedPageId = formatNotionPageId(pageId);
-        fetch(`/api/notion/${formattedPageId}`)
-          .then(async (res) => {
-            const data = await res.json();
-            if (!res.ok) {
-              throw new Error(data?.error || "Failed to fetch Notion page");
-            }
-            const normalizedRecordMap = normalizeRecordMapForRenderer(data);
-            if (!normalizedRecordMap) {
-              throw new Error("Invalid Notion record map");
-            }
-            return normalizedRecordMap;
-          })
-          .then((data) => {
-            setRecordMap(data);
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            console.error("Failed to load Notion page:", error);
-            setRecordMap(null);
-            setIsLoading(false);
-          });
-      } else {
-        setRecordMap(null);
-        setIsLoading(false);
-      }
-    } else {
-      setRecordMap(null);
+    const slug = displayProject?.contentSlug;
+    if (!slug) {
+      setContent(null);
+      setIsLoading(false);
+      return;
     }
-  }, [displayProject?.notionLink, displayProject?.notionId]);
+
+    let cancelled = false;
+    setIsLoading(true);
+
+    fetch(`/content/projects/${slug}.md`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+        return res.text();
+      })
+      .then((text) => {
+        if (cancelled) return;
+        setContent(text);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.error(`Failed to load project content (${slug}):`, error);
+        setContent(null);
+        setIsLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [displayProject?.contentSlug]);
 
   // 모달 열리면 배경 스크롤 방지
   useEffect(() => {
@@ -195,13 +114,13 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
       const timer = setTimeout(() => {
         setShouldRender(false);
         setDisplayProject(null);
-        setRecordMap(null);
+        setContent(null);
       }, 450);
       return () => clearTimeout(timer);
     }
   }, [project, shouldRender, displayProject]);
 
-  const imageList = displayProject?.imageList || [];
+  const imageList = useMemo(() => displayProject?.imageList ?? [], [displayProject?.imageList]);
   const hasImages = imageList.length > 0;
   const [imageDimensions, setImageDimensions] = useState<Array<{ width: number; height: number }>>([]);
 
@@ -383,27 +302,15 @@ const ProjectDetailModal = ({ project, onClose }: ProjectDetailModalProps) => {
             </div>
           )}
 
-          {displayProject.notionLink && (
-            <div className="min-h-0 rounded-lg notion-container">
+          {displayProject.contentSlug && (
+            <div className="min-h-0 rounded-lg project-content">
               {isLoading ? (
-                <NotionSkeleton />
-              ) : recordMap ? (
-                <NotionErrorBoundary
-                  fallback={
-                    <div className="flex items-center justify-center h-full">
-                      <p>노션 페이지를 불러올 수 없습니다.</p>
-                    </div>
-                  }
-                >
-                  <NotionRenderer
-                    recordMap={recordMap}
-                    fullPage={false}
-                    darkMode={true}
-                  />
-                </NotionErrorBoundary>
+                <ContentSkeleton />
+              ) : content ? (
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{content}</Markdown>
               ) : (
                 <div className="flex items-center justify-center h-full">
-                  <p>노션 페이지를 불러올 수 없습니다.</p>
+                  <p>프로젝트 상세 내용을 불러올 수 없습니다.</p>
                 </div>
               )}
             </div>
