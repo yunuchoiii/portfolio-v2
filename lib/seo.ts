@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_NAME = "최서원 포트폴리오";
-const SITE_URL = "https://seowonchoiii.vercel.app/";
+export const SITE_URL = "https://seowonchoiii.vercel.app";
 const SITE_DESCRIPTION =
   "사람의 시선과 흐름을 먼저 떠올리는 프론트엔드 개발자 최서원의 포트폴리오입니다. 사용자 경험을 중심에 둔 웹 서비스와 프로젝트를 소개합니다.";
 const SITE_TITLE = "프론트엔드 개발자 최서원 | 포트폴리오";

@@ -1,8 +1,30 @@
 import MfpIcon from "@/assets/icons/mfp.svg";
+import SecureLogIcon from "@/assets/icons/securelog.svg";
 import PtsIcon from "@/assets/icons/pts.svg";
 import { Career } from "@/types/career";
 
 export const CAREER_LIST: Career[] = [
+  {
+    kor_name: "시큐어로그(주)",
+    eng_name: "SecureLog",
+    department: "기술연구소",
+    position: "프론트엔드 개발자",
+    period: {
+      start: "2026.07",
+      end: "",
+    },
+    isCurrent: true,
+    descriptions: [
+      "Next.js 기반 보안 컨설팅 SaaS 제품 프론트엔드 신규 구축 및 레거시 SPA 전환 설계",
+      "Claude Code 기반 AI 에이전틱 코딩 워크플로우 도입 및 스킬·컨벤션 문서화로 팀 개발 표준 수립",
+      "Claude Design을 활용한 제품 화면 디자인 시안 및 디자인 시스템 정립 (전담 디자이너 부재 환경)",
+      "OpenAPI 3.1 명세 76개 오퍼레이션 전량 화면 매핑 대조로 설계 결함 사전 도출 및 개발 착수 전 반영",
+      "권한 4단계 기반 화면 접근 제어와 재무·개인정보 서버측 마스킹 규칙 설계",
+      "레거시 시스템 화면·모달 전수 인벤토리 명세화 및 리뉴얼 핸드오프 문서 작성",
+      "반응형 밴드별 레이아웃 재구성 및 UI/UX 개선을 통한 사내 시스템 사용성 향상",
+    ],
+    icon: SecureLogIcon,
+  },
   {
     kor_name: "(주)스터디워크",
     eng_name: "StudyWork",
