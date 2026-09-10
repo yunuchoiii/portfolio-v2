@@ -41,18 +41,13 @@ body {
    Tailwind preflight가 목록·제목 스타일을 지워버리므로 여기서 직접 세운다. */
 .project-content {
   line-height: 1.85;
-  color: rgba(255, 255, 255, 0.85);
+  color: #FFFFFF;
 }
 
 .project-content h2 {
-  width: fit-content;
   margin: 2rem 0 0.75rem;
   font-size: 1.25rem;
   font-weight: 600;
-  background: linear-gradient(to right, #2CF599, #0AAEEA);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 .project-content h2:first-child {
@@ -63,7 +58,6 @@ body {
   margin: 1.5rem 0 0.5rem;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #C2FED8;
 }
 
 .project-content p {
@@ -89,11 +83,9 @@ body {
 
 .project-content strong {
   font-weight: 600;
-  color: #FFFFFF;
 }
 
 .project-content a {
-  color: #65C7FF;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -102,7 +94,6 @@ body {
   padding: 0.1em 0.35em;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.06);
-  color: #2CF599;
   font-size: 0.9em;
 }
 
