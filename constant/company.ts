@@ -12,7 +12,7 @@ export const COMPANY_BANNER: CompanyBannerMap = {
     subtitle: "직장 내 프로젝트",
     engName: ["StudyWork"],
     engDirection: "up",
-    logo: { src: "/logos/company/studywork.png", width: 253, height: 264 },
+    logo: { src: "/logos/company/studywork.png", width: 181, height: 192 },
     gradientFrom: "#CAACFF",
     nameColor: "#8039DF",
     engColor: "#8477F4",
