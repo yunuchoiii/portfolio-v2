@@ -34,6 +34,7 @@ const config: Config = {
       },
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
       keyframes: {
         "flip-in-hor-top": {

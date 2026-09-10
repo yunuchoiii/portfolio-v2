@@ -49,7 +49,7 @@ import CareerCard from "./CareerCard";
 
 const Career = () => {
   //구직 중 상태
-  const isSearching = true;
+  const isSearching = false;
 
   return (
     <section className="w-full max-w-[928px] flex flex-col gap-y-6 sm:gap-y-8">
