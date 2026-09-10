@@ -70,7 +70,7 @@ const Introduction = () => {
             </ul>
             <ul className="!leading-loose text-sm sm:text-base text-green-10 whitespace-nowrap">
               {/* <li>2년 8개월 </li> */}
-              <li>정규직 · 프리랜서</li>
+              <li>재직중</li>
               <li className="hover:underline underline-offset-2">
                 <a href={RESUME_LINK} target="_blank" rel="noopener noreferrer">
                   바로가기

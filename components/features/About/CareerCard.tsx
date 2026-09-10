@@ -11,6 +11,7 @@ const CareerCard = ({ career, children }: { career?: Career; children?: React.Re
   }
 
   const Icon = career.icon;
+  const periodEnd = career.period.end || (career.isCurrent ? "NOW" : "");
 
   return (
     <div 
@@ -26,7 +27,7 @@ const CareerCard = ({ career, children }: { career?: Career; children?: React.Re
         <div className="flex flex-col sm:flex-row sm:items-end gap-y-1 sm:gap-y-0 gap-x-3">
           <h3 className="text-xl sm:text-2xl font-bold">{career.kor_name}</h3>
           <span className="text-xs sm:text-sm md:text-base">
-            {career.department} · {career.position} · {career.period.start} - {career.period.end}
+            {career.department} · {career.position} · {career.period.start} - {periodEnd}
           </span>
         </div>
         <ul className="list-disc pl-4 leading-relaxed sm:leading-[1.8] text-sm sm:text-base space-y-1 sm:space-y-0">
