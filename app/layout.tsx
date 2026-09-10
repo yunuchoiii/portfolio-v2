@@ -1,7 +1,7 @@
 import Header from "@/components/features/Layout/Header";
 import { defaultMetadata, jsonLdPerson, jsonLdWebsite } from "@/lib/seo";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -16,13 +16,22 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+// Montserrat - 회사 배너 영문명 전용(ExtraBold 800)
+const montserrat = Montserrat({
+  weight: ["800"],
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  variable: "--font-montserrat",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={poppins.variable}>
+    <html lang="ko" className={`${poppins.variable} ${montserrat.variable}`}>
       <head>
         {/* Pretendard 폰트 CSS - preload와 stylesheet를 함께 사용하여 빠른 로딩 */}
         <link
