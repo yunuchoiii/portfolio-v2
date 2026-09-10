@@ -28,16 +28,16 @@ const CompanyBanner = ({ banner, className }: CompanyBannerProps) => {
       }}
     >
       {/* 상단 — 로고 왼쪽, 회사명·부제를 오른쪽에 두 줄로 */}
-      {/* 배너 폭이 모바일에선 120px 남짓이라 로고+텍스트 가로 배치가 들어가지 않는다.
-          base 에서만 세로로 쌓고, sm 부터 시안대로 가로로 붙인다. */}
-      <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-y-1.5 gap-x-2 sm:gap-x-2.5 md:gap-x-3">
+      {/* 모바일에선 로고를 숨기므로 텍스트만 남고, sm 부터 로고가 왼쪽에 붙는다 */}
+      <div className="relative z-10 flex items-center gap-x-2 sm:gap-x-2.5 md:gap-x-3">
         <Image
           src={banner.logo.src}
           width={banner.logo.width}
           height={banner.logo.height}
           alt=""
           aria-hidden="true"
-          className="h-8 sm:h-10 md:h-12 lg:h-[64px] w-auto object-contain flex-shrink-0"
+          // 모바일은 배너 폭이 120px 남짓이라 로고를 두면 회사명이 들어갈 자리가 없다
+          className="hidden sm:block h-10 md:h-12 lg:h-[64px] w-auto object-contain flex-shrink-0"
         />
         {/* 시안값: 회사명 Pretendard SemiBold 24px / 부제 Pretendard Regular 20px.
             Pretendard 는 body 기본 폰트라 따로 지정하지 않는다. */}
