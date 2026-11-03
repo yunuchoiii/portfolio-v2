@@ -9,6 +9,7 @@ export enum SkillLevel {
 export enum SkillEnum {
   React = "React",
   ReactNative = "ReactNative",
+  Expo = "Expo",
   NextJs = "Next.js",
   Vue = "Vue",
   TypeScript = "TypeScript",

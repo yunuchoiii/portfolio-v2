@@ -5,6 +5,7 @@ import AWSIcon from "@/assets/icons/aws.svg";
 import BootstrapIcon from "@/assets/icons/bootstrap.svg";
 import ClaudeIcon from "@/assets/icons/claude.svg";
 import CursorIcon from "@/assets/icons/cursor.svg";
+import ExpoIcon from "@/assets/icons/expo.svg";
 import FigmaIcon from "@/assets/icons/figma.svg";
 import FirebaseIcon from "@/assets/icons/firebase.svg";
 import GithubIcon from "@/assets/icons/github.svg";
@@ -43,6 +44,12 @@ export const SKILL_LIST: Partial<Record<SkillEnum, Skill>> = {
     icon: ReactIcon,
     level: SkillLevel.Basic,
     pointColor: "#000000"
+  },
+  [SkillEnum.Expo]: {
+    name: "Expo",
+    icon: ExpoIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#FFFFFF"
   },
   [SkillEnum.Vue]: {
     name: "Vue",
