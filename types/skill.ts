@@ -34,6 +34,7 @@ export enum SkillEnum {
   Storybook = "Storybook",
   Cursor = "Cursor",
   Claude = "Claude",
+  Codex = "Codex",
 }
 
 export interface Skill {
