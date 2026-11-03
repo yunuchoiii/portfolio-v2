@@ -183,6 +183,7 @@ export const PERSONAL_PROJECT_LIST: Project[] = [
       start: "2026.08",
       end: "2026.11",
     },
+    contentSlug: "intava",
     deployedLink: "https://apps.apple.com/kr/app/id6799622371",
   },
   {
