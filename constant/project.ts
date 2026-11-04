@@ -160,6 +160,33 @@ export const COMPANY_PROJECT_LIST: Project[] = [
 
 export const PERSONAL_PROJECT_LIST: Project[] = [
   {
+    title: "인타바",
+    summary: "화면을 보지 않아도 소리·진동·알림으로 다음 동작을 알려주는 운동 인터벌 타이머 앱입니다.\n광고·결제·로그인 없이 기획부터 디자인, 출시·운영까지 혼자 진행했습니다.",
+    image: "/images/projects/Intava/banner.png",
+    imageList: [
+      "/images/projects/Intava/01.png",
+      "/images/projects/Intava/02.png",
+      "/images/projects/Intava/03.png",
+      "/images/projects/Intava/04.png",
+      "/images/projects/Intava/05.png",
+      "/images/projects/Intava/06.png",
+      "/images/projects/Intava/07.png",
+    ],
+    skills: [
+      SkillEnum.React,
+      SkillEnum.ReactNative,
+      SkillEnum.Expo,
+      SkillEnum.TypeScript,
+      SkillEnum.Claude,
+    ],
+    period: {
+      start: "2026.08",
+      end: "2026.11",
+    },
+    contentSlug: "intava",
+    deployedLink: "https://apps.apple.com/kr/app/id6799622371",
+  },
+  {
     title: "루틴 아일랜드",
     summary: "작은 습관으로 쌓아올리는 아일랜드.\n루틴 관리 소셜 플랫폼입니다.",
     image: "/images/projects/RoutineIsland/banner.png",

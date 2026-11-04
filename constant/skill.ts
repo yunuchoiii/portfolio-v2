@@ -4,7 +4,9 @@ import MUIIcon from "@/assets/icons/MUI.svg";
 import AWSIcon from "@/assets/icons/aws.svg";
 import BootstrapIcon from "@/assets/icons/bootstrap.svg";
 import ClaudeIcon from "@/assets/icons/claude.svg";
+import CodexIcon from "@/assets/icons/codex.svg";
 import CursorIcon from "@/assets/icons/cursor.svg";
+import ExpoIcon from "@/assets/icons/expo.svg";
 import FigmaIcon from "@/assets/icons/figma.svg";
 import FirebaseIcon from "@/assets/icons/firebase.svg";
 import GithubIcon from "@/assets/icons/github.svg";
@@ -43,6 +45,12 @@ export const SKILL_LIST: Partial<Record<SkillEnum, Skill>> = {
     icon: ReactIcon,
     level: SkillLevel.Basic,
     pointColor: "#000000"
+  },
+  [SkillEnum.Expo]: {
+    name: "Expo",
+    icon: ExpoIcon,
+    level: SkillLevel.Basic,
+    pointColor: "#FFFFFF"
   },
   [SkillEnum.Vue]: {
     name: "Vue",
@@ -137,6 +145,16 @@ export const SKILL_LIST: Partial<Record<SkillEnum, Skill>> = {
 };
 
 export const TOOL_LIST: Partial<Record<SkillEnum, Tool>> = {
+  [SkillEnum.Claude]: {
+    name: "Claude",
+    icon: ClaudeIcon,
+    pointColor: "#D97757"
+  },
+  [SkillEnum.Codex]: {
+    name: "Codex",
+    icon: CodexIcon,
+    pointColor: "#FFFFFF"
+  },
   [SkillEnum.Github]: {
     name: "Github",
     icon: GithubIcon,
@@ -146,11 +164,6 @@ export const TOOL_LIST: Partial<Record<SkillEnum, Tool>> = {
     name: "Cursor",
     icon: CursorIcon,
     pointColor: "#FFFFFF"
-  },
-  [SkillEnum.Claude]: {
-    name: "Claude",
-    icon: ClaudeIcon,
-    pointColor: "#D97757"
   },
   [SkillEnum.AWS]: {
     name: "AWS",
